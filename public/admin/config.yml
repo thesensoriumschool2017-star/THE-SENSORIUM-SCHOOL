@@ -1,0 +1,139 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: your-github-username/your-repo-name
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "site_content"
+    label: "Site Content"
+    files:
+      - label: "Home Founder Section"
+        name: "home"
+        file: "public/content/home.json"
+        format: "json"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - label: "Intro Paragraphs"
+            name: "intro_paragraphs"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - { label: "Meet Title", name: "meet_title", widget: "string" }
+          - { label: "Meet Paragraph", name: "meet_paragraph", widget: "text" }
+          - { label: "Impact Title", name: "impact_title", widget: "string" }
+          - label: "Impact Points"
+            name: "impact_points"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string" }
+          - { label: "Closing Paragraph", name: "closing_paragraph", widget: "text" }
+          - { label: "Follow Line", name: "follow_line", widget: "string" }
+          - { label: "Founder Image", name: "founder_image", widget: "image" }
+          - { label: "Founder Image Note", name: "founder_image_note", widget: "string", required: false }
+
+      - label: "About Page"
+        name: "about"
+        file: "public/content/about.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+
+      - label: "Approach Page"
+        name: "approach"
+        file: "public/content/approach.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Points Heading", name: "points_heading", widget: "string" }
+          - label: "Points"
+            name: "points"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string" }
+
+      - label: "Areas Of Support Page"
+        name: "areas"
+        file: "public/content/areas.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "string" }
+          - label: "Points"
+            name: "points"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string" }
+
+      - label: "Mission Page"
+        name: "mission"
+        file: "public/content/mission.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+
+      - label: "Vision Page"
+        name: "vision"
+        file: "public/content/vision.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+
+      - label: "Services Page Intro"
+        name: "services_page"
+        file: "public/content/services-page.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+
+      - label: "Gallery Page"
+        name: "gallery"
+        file: "public/content/gallery.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - label: "Gallery Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.caption}} ({{fields.type}})"
+            fields:
+              - { label: "ID", name: "id", widget: "string", required: false }
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                options: ["image", "video"]
+              - { label: "Caption", name: "caption", widget: "string" }
+              - { label: "Image File", name: "image", widget: "image", required: false }
+              - { label: "Video File", name: "video", widget: "file", required: false }
+              - { label: "YouTube Video URL", name: "video_url", widget: "string", required: false }
+
+  - name: "services"
+    label: "Services Cards"
+    files:
+      - label: "Services List"
+        name: "services_list"
+        file: "public/content/services.json"
+        format: "json"
+        fields:
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
