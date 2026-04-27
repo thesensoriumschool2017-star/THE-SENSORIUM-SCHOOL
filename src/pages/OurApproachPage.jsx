@@ -7,7 +7,6 @@ import useContentJson from "../hooks/useContentJson";
 function OurApproachPage() {
   const fallbackApproach = {
     title: "Our Approach",
-    subtitle: "How We Work",
     intro:
       "Our approach is rooted in a multidisciplinary and child-centric framework, where therapy is delivered as a coordinated effort toward holistic development.",
     points_heading: "We Emphasize",
@@ -25,9 +24,7 @@ function OurApproachPage() {
     <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
-        <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
-          {approachContent.subtitle}
-        </p>
+       
         <h1 className="mt-2 text-4xl font-bold">{approachContent.title}</h1>
 
         <section className="mt-8 rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">

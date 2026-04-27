@@ -8,7 +8,6 @@ import useContentJson from "../hooks/useContentJson";
 function ServicesPage() {
   const fallbackServicesPage = {
     title: "Our Services",
-    subtitle: "What We Do",
     intro: "We offer an integrated range of therapeutic and educational services, including:",
   };
 
@@ -19,9 +18,7 @@ function ServicesPage() {
       <Navbar />
       <main className="flex-1 py-14">
         <section className="mx-auto w-full max-w-6xl px-4 pb-10 md:px-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
-            {pageContent.subtitle}
-          </p>
+        
           <h1 className="mt-2 text-4xl font-bold">{pageContent.title}</h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">{pageContent.intro}</p>
           <Link

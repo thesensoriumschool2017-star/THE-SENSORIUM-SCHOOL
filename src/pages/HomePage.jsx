@@ -29,7 +29,7 @@ function HomePage() {
     follow_line: "Follow her journey to explore stories of empowerment, education, impact and change.",
     founder_image:
       "",
-    founder_image_note: "Add founder image here",
+   
   };
 
   const homeContent = useContentJson("/content/home.json", fallbackHomeContent);
@@ -45,9 +45,7 @@ function HomePage() {
         <section className="mx-auto w-full max-w-6xl px-4 pb-10 pt-14 md:px-6">
           <div className="grid gap-6 rounded-3xl border border-amber-100 bg-white p-6 shadow-sm md:grid-cols-12 md:items-center md:p-8">
             <div className="space-y-4 md:col-span-7">
-              <p className="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-800">
-                Universal Empowerment Foundation
-              </p>
+              
               <h1 className="text-3xl font-bold leading-tight text-stone-900 md:text-5xl">
                 Empowering Children, Strengthening Families
               </h1>
@@ -75,7 +73,7 @@ function HomePage() {
                 <img
                   src={mainImage}
                   alt="Founder profile"
-                  className="h-[280px] w-full object-cover md:h-[320px]"
+                  className="h-70 w-full object-cover md:h-80"
                 />
               </div>
             </div>
@@ -143,11 +141,9 @@ function HomePage() {
                 <img
                   src={mainImage}
                   alt="Founder profile placeholder"
-                  className="h-[360px] w-full object-cover"
+                  className="h-90 w-full object-cover"
                 />
-                <p className="px-4 py-3 text-xs font-medium text-stone-600">
-                  {homeContent.founder_image_note}
-                </p>
+                
               </div>
             </div>
           </div>
