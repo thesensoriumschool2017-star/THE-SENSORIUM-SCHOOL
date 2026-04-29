@@ -77,7 +77,7 @@ function GalleryPage() {
                   className="h-56 w-full object-cover transition duration-300 hover:scale-105"
                 />
               )}
-              <figcaption className="px-4 py-3 text-sm text-stone-600">
+              <figcaption className="px-4 py-3 text-base text-stone-600">
                 {item.caption}
               </figcaption>
             </figure>

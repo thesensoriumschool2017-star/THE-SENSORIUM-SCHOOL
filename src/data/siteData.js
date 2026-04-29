@@ -59,7 +59,7 @@ export const defaultPrograms = [
 export const galleryPhotos = [
   {
     src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1100&q=80",
-    alt: "Children in a classroom program",
+   
   },
   {
     src: "https://images.unsplash.com/photo-1444212477490-ca407925329e?auto=format&fit=crop&w=1100&q=80",

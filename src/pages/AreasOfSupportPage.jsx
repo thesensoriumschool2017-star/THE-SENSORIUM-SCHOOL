@@ -30,9 +30,9 @@ function AreasOfSupportPage() {
 
         <section className="mt-8 rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
           <h2 className="text-2xl font-semibold">{areasContent.section_heading}</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">{areasContent.intro}</p>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-600">{areasContent.intro}</p>
 
-          <ul className="mt-3 list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-600">
+          <ul className="mt-3 list-disc space-y-2 pl-6 text-base leading-relaxed text-stone-600">
             {(areasContent.points || []).map((point) => (
               <li key={point}>{point}</li>
             ))}

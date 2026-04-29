@@ -11,7 +11,7 @@ function JoinUsPage() {
           Get Involved
         </p>
         <h1 className="mt-2 text-4xl font-bold">Join Us</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-600">
           Share your details and our team will contact you soon.
         </p>
 

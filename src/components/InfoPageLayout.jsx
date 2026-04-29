@@ -12,7 +12,7 @@ function InfoPageLayout({ title, subtitle, body }) {
           {subtitle}
         </p>
         <h1 className="mt-2 text-4xl font-bold">{title}</h1>
-        <p className="mt-4 max-w-3xl whitespace-pre-line text-sm leading-relaxed text-stone-600">
+        <p className="mt-4 max-w-3xl whitespace-pre-line text-base leading-relaxed text-stone-600">
           {body}
         </p>
         <Link

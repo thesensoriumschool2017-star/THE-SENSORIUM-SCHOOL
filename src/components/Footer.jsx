@@ -3,7 +3,7 @@ function Footer() {
     <footer className="border-t border-amber-100 bg-stone-900 text-stone-100">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 md:grid-cols-3 md:px-6">
         <div className="space-y-3">
-          <p className="text-lg font-semibold">Universal Empowerment Foundation</p>
+          <p className="text-lg font-semibold">THE SENSORIUM</p>
           <p className="max-w-md text-sm text-stone-300">
             Building stronger communities through education, healthcare, and skill
             empowerment.
@@ -48,7 +48,7 @@ function Footer() {
           <p className="font-semibold">Follow us</p>
           <ul className="space-y-2 text-sm text-stone-300">
             <li className="flex items-center gap-2">
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-pink-500 via-orange-400 to-yellow-300 text-[10px] font-bold text-white">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-linear-to-br from-pink-500 via-orange-400 to-yellow-300 text-[10px] font-bold text-white">
                 I
               </span>
               <a

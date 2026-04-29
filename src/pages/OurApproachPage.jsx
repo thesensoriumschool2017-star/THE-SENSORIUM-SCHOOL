@@ -28,9 +28,9 @@ function OurApproachPage() {
         <h1 className="mt-2 text-4xl font-bold">{approachContent.title}</h1>
 
         <section className="mt-8 rounded-3xl border border-amber-100 bg-white p-8 shadow-sm">
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">{approachContent.intro}</p>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-600">{approachContent.intro}</p>
           <h2 className="mt-6 text-lg font-semibold text-stone-900">{approachContent.points_heading}</h2>
-          <ul className="mt-3 list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-600">
+          <ul className="mt-3 list-disc space-y-2 pl-6 text-base leading-relaxed text-stone-600">
             {(approachContent.points || []).map((point) => (
               <li key={point}>{point}</li>
             ))}
