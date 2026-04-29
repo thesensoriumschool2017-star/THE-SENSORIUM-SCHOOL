@@ -7,22 +7,13 @@ import bannerImage from "../assets/banner.png";
 
 function HomePage() {
   const fallbackHomeContent = {
-    hero_title: "From the Founder's Desk",
-    intro_paragraphs: [
-      "Sonika Dubey is aspiring to be a game changer in Education and well-being sector of Children with Special needs in India. Bringing women's issues and avenues to empower them and helping to nurture, creating an environment of Empowered Women.",
-      "She is a Postgraduate in English Language as well as Mass Communication from Kanpur University and Makhnalal University of Journalism, Bhopal. M.P. respectively. Sonika is a recipient of many awards for her contribution in Social Sector.",
-      "She is working on her first book focussing on Avenues for Empowering Society. By creating a platform like Universal Empowerment Foundation, Sonika is trying to change the working populace of India and by putting women's voices on the policy tables of governance.",
-      "Sonika is currently building a new initiative that puts Children with special needs in sustainable and empowered position and help them lead their life independently and contribute to the nation building processes.",
-    ],
-    meet_title: "Meet Sonika Dubey",
-    meet_paragraph:
-      "With dual postgraduate degrees in English Language (Kanpur University) and Mass Communication (Makhanlal Chaturvedi University, Bhopal), Sonika brings both insight and compassion to the social-sector landscape.",
+
     impact_title: "Leadership & Impact",
     impact_points: [
-      "Founded Universal Empowerment Foundation, her platform for empowering women's voices and influencing policy at the governance table.",
-      "Championing inclusion for children with special needs, Sonika is building an initiative that positions them for independence and contribution to nation-building.",
-      "Recipient of multiple social-sector awards in recognition of her tireless work in education, well-being and women's empowerment.",
-      "Currently authoring her first book: Avenues for Empowering Society, a book set to explore pathways to inclusive growth and transformation.",
+      "Founder of the Universal Empowerment Foundation, focused on advancing women’s representation and contributing to policy engagement at the governance level.",
+"Leads inclusive initiatives for children with special needs, enabling independence, capability-building, and meaningful societal participation.",
+"Provides structured counselling and guidance for parents and children to support emotional well-being and holistic development.",
+"Sonika is committed to building inclusive systems where equity, dignity, and opportunity form the foundation of . ",
     ],
     closing_paragraph:
       "At her core, Sonika stands for a society where every child, every woman, every voice is valued, and where inclusion is not an after-thought but the very foundation of progress. Her journey is one of heart, purpose and relentless pursuit of a more inclusive Bharat.",
@@ -65,11 +56,6 @@ function HomePage() {
                 </p>
               ))}
 
-              <h2 className="pt-2 text-2xl font-bold">{homeContent.meet_title}</h2>
-              <p className="text-sm leading-relaxed text-stone-700">
-                {homeContent.meet_paragraph}
-              </p>
-
               <h3 className="pt-2 text-lg font-semibold text-stone-900">{homeContent.impact_title}</h3>
               <ul className="list-disc space-y-2 pl-6 text-sm leading-relaxed text-stone-700">
                 {homeContent.impact_points?.map((point) => (
@@ -79,9 +65,6 @@ function HomePage() {
 
               <p className="text-sm leading-relaxed text-stone-700">
                 {homeContent.closing_paragraph}
-              </p>
-              <p className="text-sm font-medium text-amber-800">
-                {homeContent.follow_line}
               </p>
             </div>
 

@@ -1,24 +1,186 @@
 {
-  "title": "Photo & Video Gallery",
-  "subtitle": "Foundation Moments",
-  "items": [
-    {
-      "id": "g1",
-      "type": "image",
-      "caption": "Children in a classroom program",
-      "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1100&q=80"
-    },
-    {
-      "id": "g2",
-      "type": "image",
-      "caption": "Women group community meeting",
-      "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?auto=format&fit=crop&w=1100&q=80"
-    },
-    {
-      "id": "g3",
-      "type": "image",
-      "caption": "Volunteer helping a child read",
-      "image": "https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1100&q=80"
-    }
-  ]
+    "title":  "Photo Gallery",
+    "subtitle":  "Foundation Moments",
+    "items":  [
+                  {
+                      "id":  "img-1",
+                      "type":  "image",
+                      "caption":  "Demo Image 1",
+                      "image":  "https://picsum.photos/id/1011/1200/800"
+                  },
+                  {
+                      "id":  "img-2",
+                      "type":  "image",
+                      "caption":  "Demo Image 2",
+                      "image":  "https://picsum.photos/id/1015/1200/800"
+                  },
+                  {
+                      "id":  "img-3",
+                      "type":  "image",
+                      "caption":  "Demo Image 3",
+                      "image":  "https://picsum.photos/id/1025/1200/800"
+                  },
+                  {
+                      "id":  "img-4",
+                      "type":  "image",
+                      "caption":  "Demo Image 4",
+                      "image":  "https://picsum.photos/id/1035/1200/800"
+                  },
+                  {
+                      "id":  "img-5",
+                      "type":  "image",
+                      "caption":  "Demo Image 5",
+                      "image":  "https://picsum.photos/id/1043/1200/800"
+                  },
+                  {
+                      "id":  "img-6",
+                      "type":  "image",
+                      "caption":  "Demo Image 6",
+                      "image":  "https://picsum.photos/id/1050/1200/800"
+                  },
+                  {
+                      "id":  "img-7",
+                      "type":  "image",
+                      "caption":  "Demo Image 7",
+                      "image":  "https://picsum.photos/id/1062/1200/800"
+                  },
+                  {
+                      "id":  "img-8",
+                      "type":  "image",
+                      "caption":  "Demo Image 8",
+                      "image":  "https://picsum.photos/id/1074/1200/800"
+                  },
+                  {
+                      "id":  "img-9",
+                      "type":  "image",
+                      "caption":  "Demo Image 9",
+                      "image":  "https://picsum.photos/id/1084/1200/800"
+                  },
+                  {
+                      "id":  "img-10",
+                      "type":  "image",
+                      "caption":  "Demo Image 10",
+                      "image":  "https://picsum.photos/id/109/1200/800"
+                  },
+                  {
+                      "id":  "vid-1",
+                      "type":  "video",
+                      "caption":  "Demo Video 1",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/dog.mp4"
+                  },
+                  {
+                      "id":  "vid-2",
+                      "type":  "video",
+                      "caption":  "Demo Video 2",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/elephants.mp4"
+                  },
+                  {
+                      "id":  "vid-3",
+                      "type":  "video",
+                      "caption":  "Demo Video 3",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/sea-turtle.mp4"
+                  },
+                  {
+                      "id":  "vid-4",
+                      "type":  "video",
+                      "caption":  "Demo Video 4",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/mountains.mp4"
+                  },
+                  {
+                      "id":  "vid-5",
+                      "type":  "video",
+                      "caption":  "Demo Video 5",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/dog.mp4"
+                  },
+                  {
+                      "id":  "vid-6",
+                      "type":  "video",
+                      "caption":  "Demo Video 6",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/elephants.mp4"
+                  },
+                  {
+                      "id":  "vid-7",
+                      "type":  "video",
+                      "caption":  "Demo Video 7",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/sea-turtle.mp4"
+                  },
+                  {
+                      "id":  "vid-8",
+                      "type":  "video",
+                      "caption":  "Demo Video 8",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/mountains.mp4"
+                  },
+                  {
+                      "id":  "vid-9",
+                      "type":  "video",
+                      "caption":  "Demo Video 9",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/dog.mp4"
+                  },
+                  {
+                      "id":  "vid-10",
+                      "type":  "video",
+                      "caption":  "Demo Video 10",
+                      "video":  "https://res.cloudinary.com/demo/video/upload/elephants.mp4"
+                  },
+                  {
+                      "id":  "img-11",
+                      "type":  "image",
+                      "caption":  "Demo Image 11",
+                      "image":  "https://picsum.photos/id/110/1200/800"
+                  },
+                  {
+                      "id":  "img-12",
+                      "type":  "image",
+                      "caption":  "Demo Image 12",
+                      "image":  "https://picsum.photos/id/111/1200/800"
+                  },
+                  {
+                      "id":  "img-13",
+                      "type":  "image",
+                      "caption":  "Demo Image 13",
+                      "image":  "https://picsum.photos/id/112/1200/800"
+                  },
+                  {
+                      "id":  "img-14",
+                      "type":  "image",
+                      "caption":  "Demo Image 14",
+                      "image":  "https://picsum.photos/id/113/1200/800"
+                  },
+                  {
+                      "id":  "img-15",
+                      "type":  "image",
+                      "caption":  "Demo Image 15",
+                      "image":  "https://picsum.photos/id/114/1200/800"
+                  },
+                  {
+                      "id":  "img-16",
+                      "type":  "image",
+                      "caption":  "Demo Image 16",
+                      "image":  "https://picsum.photos/id/115/1200/800"
+                  },
+                  {
+                      "id":  "img-17",
+                      "type":  "image",
+                      "caption":  "Demo Image 17",
+                      "image":  "https://picsum.photos/id/116/1200/800"
+                  },
+                  {
+                      "id":  "img-18",
+                      "type":  "image",
+                      "caption":  "Demo Image 18",
+                      "image":  "https://picsum.photos/id/117/1200/800"
+                  },
+                  {
+                      "id":  "img-19",
+                      "type":  "image",
+                      "caption":  "Demo Image 19",
+                      "image":  "https://picsum.photos/id/118/1200/800"
+                  },
+                  {
+                      "id":  "img-20",
+                      "type":  "image",
+                      "caption":  "Demo Image 20",
+                      "image":  "https://picsum.photos/id/119/1200/800"
+                  }
+              ]
 }

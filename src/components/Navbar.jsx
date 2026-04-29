@@ -18,7 +18,7 @@ function Navbar() {
     <header className="sticky top-0 z-40 border-b border-amber-100 bg-amber-50/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link to="/" className="text-lg font-bold tracking-tight text-stone-800">
-          THE SENSORIUM
+          THE SENSORIUM SCHOOL
         </Link>
 
         <nav className="hidden flex-wrap gap-5 text-sm font-semibold text-stone-700 lg:flex">
