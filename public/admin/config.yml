@@ -1,9 +1,9 @@
-local_backend: true
-
 backend:
   name: github
-  repo: your-github-username/your-repo-name
+  repo: tiwari011/founation-webite-freelance-
   branch: main
+  base_url: https://REPLACE_WITH_YOUR_VERCEL_DOMAIN
+  auth_endpoint: api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
