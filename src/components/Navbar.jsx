@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-amber-200 bg-amber-50.5/90 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-2 py-4 md:px-2">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-evenly gap-8 px-2 py-4 md:px-2">
         <a href="/" className="text-xl font-bold tracking-tight text-stone-800">
           THE SENSORIUM SCHOOL
         </a>

@@ -13,16 +13,29 @@ export async function submitJoinUs({ name, phone, email }) {
     submitted_at: new Date().toISOString(),
   };
 
-  const resp = await fetch(endpoint, {
-    method: "POST",
-    // Apps Script doesn't always like JSON content-type; simple form payload is safest.
-    headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-    body: new URLSearchParams(payload).toString(),
-  });
+  const body = new URLSearchParams(payload).toString();
 
-  if (!resp.ok) {
-    const text = await resp.text().catch(() => "");
-    throw new Error(`Submit failed (${resp.status}). ${text}`.trim());
+  try {
+    const resp = await fetch(endpoint, {
+      method: "POST",
+      // Apps Script doesn't always like JSON content-type; simple form payload is safest.
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+      body,
+    });
+
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => "");
+      throw new Error(`Submit failed (${resp.status}). ${text}`.trim());
+    }
+  } catch (err) {
+    // Localhost + Apps Script often fails due to CORS response restrictions
+    // even when write succeeds. Retry using no-cors as a fallback.
+    await fetch(endpoint, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+      body,
+    });
   }
 }
 

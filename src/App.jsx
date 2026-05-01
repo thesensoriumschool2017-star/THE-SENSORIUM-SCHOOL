@@ -9,6 +9,7 @@ import MissionPage from "./pages/MissionPage";
 import VisionPage from "./pages/VisionPage";
 import JoinUsPage from "./pages/JoinUsPage";
 import AutoJoinUsPopup from "./components/AutoJoinUsPopup";
+import AdminPanelPage from "./pages/AdminPanelPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/our-vision" element={<VisionPage />} />
         <Route path="/join-us" element={<JoinUsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/admin-panel" element={<AdminPanelPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

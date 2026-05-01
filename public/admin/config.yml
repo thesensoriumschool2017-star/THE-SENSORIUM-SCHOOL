@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: tiwari011/founation-webite-freelance-
+  repo: tiwari011/sensorium
   branch: main
-  base_url: https://REPLACE_WITH_YOUR_VERCEL_DOMAIN
+  base_url: https://sensorium-sable.vercel.app
   auth_endpoint: api/auth
 
 media_folder: "public/uploads"
