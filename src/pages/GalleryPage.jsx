@@ -6,7 +6,7 @@ import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
 import useContentJson from "../hooks/useContentJson";
 
-const INITIAL_VISIBLE_ITEMS = 12;
+const INITIAL_VISIBLE_ITEMS = 9;
 
 function toYoutubeEmbed(url) {
   if (!url) return "";
@@ -68,12 +68,12 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4 py-8">
-      <div className="relative w-full max-w-4xl rounded-2xl bg-white p-4 shadow-2xl md:p-6">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 px-4 py-8">
+      <div className="relative w-full max-w-4xl rounded-2xl bg-[linear-gradient(155deg,#fff7ea_0%,#ffe8d4_100%)] p-4 shadow-2xl md:p-6">
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-full border border-stone-300 bg-white px-3 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100"
+          className="absolute right-3 top-3 rounded-full border border-stone-300 bg-[#fff0dd] px-3 py-1 text-sm font-semibold text-stone-700 hover:bg-[#ffe5c5]"
         >
           Close
         </button>
@@ -84,12 +84,12 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
               <iframe
                 src={youtubeEmbed}
                 title={current.caption || "Gallery video"}
-                className="h-[420px] w-full"
+                className="h-90 w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             ) : (
-              <video ref={videoRef} controls className="h-[420px] w-full object-contain" src={videoSource}>
+              <video ref={videoRef} controls className="h-90 w-ull object-contain" src={videoSource}>
                 Your browser does not support video playback.
               </video>
             )
@@ -97,7 +97,7 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
             <img
               src={current.image}
               alt={current.caption || "Gallery image"}
-              className="h-[420px] w-full object-contain"
+              className="h-90 w-full object-contain"
             />
           )}
         </div>
@@ -162,7 +162,7 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
       <div
         className={
           "rounded-2xl border border-amber-100 p-2 " +
-          (expanded ? "max-h-[980px] overflow-y-auto" : "overflow-hidden")
+          (expanded ? "max-h-190 overflow-y-auto" : "overflow-hidden")
         }
       >
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -171,7 +171,7 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
               key={item.id || `${item.type}-${index}`}
               type="button"
               onClick={() => onOpen(item.id)}
-              className="overflow-hidden rounded-2xl bg-white text-left shadow-sm"
+                    className="overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#fff8ec_0%,#ffe9d8_100%)] text-left shadow-sm"
             >
               {item.type === "video" ? (
                 item.video_url && isYoutubeUrl(item.video_url) ? (

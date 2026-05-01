@@ -20,7 +20,7 @@ function ServicesPage() {
         <section className="mx-auto w-full max-w-6xl px-4 pb-10 md:px-6">
         
           <h1 className="mt-2 text-4xl font-bold">{pageContent.title}</h1>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-600">{pageContent.intro}</p>
+          <p className="mt-3 max-w-2xl  text-md leading-relaxed text-stone-600">{pageContent.intro}</p>
           <Link
             to="/"
             className="mt-6 inline-flex rounded-full border border-amber-300 px-5 py-2 text-sm font-semibold text-amber-800 hover:bg-amber-100"

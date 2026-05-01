@@ -3,12 +3,12 @@ import ProgramCard from "./ProgramCard";
 import { defaultPrograms } from "../data/siteData";
 
 function ServicesSection({ compact = false }) {
-  const [services, setServices] = useState(defaultPrograms);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     let active = true;
 
-    fetch("/content/services.json")
+    fetch("/content/services.json", { cache: "no-store" })
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error("No services file"))))
       .then((data) => {
         if (!active) return;
@@ -29,15 +29,7 @@ function ServicesSection({ compact = false }) {
   }, []);
 
   return (
-    <section id="our-services" className="mx-auto w-full max-w-6xl px-4 pb-16 md:px-6">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold">Our Services</h2>
-        <p className="mt-2 text-stone-600">
-          {compact
-            ? "Service cards below are managed from the admin panel."
-            : "Each service card image and text is managed from admin."}
-        </p>
-      </div>
+    <section id="our-services" className="mx-auto w-full  max-w-6xl px-4 pb-16 md:px-6">
       <div className="grid gap-6 md:grid-cols-3">
         {services.map((service, index) => (
           <ProgramCard
@@ -45,6 +37,7 @@ function ServicesSection({ compact = false }) {
             title={service.title}
             description={service.description}
             image={service.image}
+            details={service.details}
           />
         ))}
       </div>

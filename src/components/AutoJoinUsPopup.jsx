@@ -1,33 +1,41 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { submitJoinUs } from "../lib/joinUs";
 
-const STORAGE_KEY = "uef_join_us_popup_dismissed";
+const SESSION_DISMISSED_KEY = "uef_joinus_popup_dismissed_session";
+const SESSION_SHOWN_KEY = "uef_joinus_popup_shown_session";
 
 function AutoJoinUsPopup() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
   useEffect(() => {
-    // Show only once on first entry to the site (initial mount).
-    // If user cancels, never auto-show again (persisted in localStorage).
-    const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
-    if (dismissed) return;
+    if (location.pathname === "/join-us") {
+      setIsVisible(false);
+      return;
+    }
 
-    // If user entered directly on the Join Us page, don't auto-show.
-    if (location.pathname === "/join-us") return;
+    const dismissed = sessionStorage.getItem(SESSION_DISMISSED_KEY) === "1";
+    const alreadyShown = sessionStorage.getItem(SESSION_SHOWN_KEY) === "1";
+    if (dismissed || alreadyShown) return;
 
-    const timer = setTimeout(() => setIsVisible(true), 2000);
+    sessionStorage.setItem(SESSION_SHOWN_KEY, "1");
+    const timer = setTimeout(() => setIsVisible(true), 1200);
     return () => clearTimeout(timer);
-    // Intentionally run only once (initial mount).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location.pathname]);
 
   const dismiss = () => {
-    localStorage.setItem(STORAGE_KEY, "1");
+    sessionStorage.setItem(SESSION_DISMISSED_KEY, "1");
     setIsVisible(false);
+  };
+
+  const goToJoinUs = () => {
+    sessionStorage.setItem(SESSION_DISMISSED_KEY, "1");
+    setIsVisible(false);
+    navigate("/join-us");
   };
 
   async function onSubmit(e) {
@@ -44,8 +52,8 @@ function AutoJoinUsPopup() {
       await submitJoinUs(form);
       setStatus({ state: "success", message: "Thanks! We received your details." });
       setForm({ name: "", phone: "", email: "" });
-      // After a successful submit, don't auto-show again.
-      localStorage.setItem(STORAGE_KEY, "1");
+      sessionStorage.setItem(SESSION_DISMISSED_KEY, "1");
+      setTimeout(() => setIsVisible(false), 900);
     } catch (err) {
       setStatus({
         state: "error",
@@ -57,19 +65,15 @@ function AutoJoinUsPopup() {
     }
   }
 
-  if (!isVisible) return null;
+  if (!isVisible || location.pathname === "/join-us") return null;
 
   return (
     <div className="fixed inset-0 z-70 flex items-center justify-center bg-black/45 px-4">
-      <div className="w-full max-w-lg rounded-2xl border border-amber-100 bg-white p-6 shadow-xl">
+      <div className="w-full max-w-lg rounded-2xl border border-amber-200 bg-[linear-gradient(150deg,#fff7ea_0%,#ffe9d6_100%)] p-6 shadow-xl">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
-              Join Us
-            </p>
-            <h2 className="mt-1 text-2xl font-bold text-stone-900">
-              Be Part of the Change
-            </h2>
+            <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Join Us</p>
+            <h2 className="mt-1 text-2xl font-bold text-stone-900">Be Part of the Change</h2>
           </div>
           <button
             type="button"
@@ -80,9 +84,7 @@ function AutoJoinUsPopup() {
           </button>
         </div>
 
-        <p className="mb-4 text-sm text-stone-600">
-          Share your details and our team will connect with you.
-        </p>
+        <p className="mb-4 text-sm text-stone-600">Share your details and our team will connect with you.</p>
 
         <form className="grid gap-3 md:grid-cols-2" onSubmit={onSubmit}>
           <input
@@ -128,6 +130,13 @@ function AutoJoinUsPopup() {
               className="rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {status.state === "submitting" ? "Submitting..." : "Submit"}
+            </button>
+            <button
+              type="button"
+              onClick={goToJoinUs}
+              className="rounded-xl border border-amber-300 px-5 py-2.5 text-sm font-semibold text-amber-800 transition hover:bg-amber-100"
+            >
+              Join Us Page
             </button>
           </div>
         </form>

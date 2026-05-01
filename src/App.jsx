@@ -8,7 +8,7 @@ import AreasOfSupportPage from "./pages/AreasOfSupportPage";
 import MissionPage from "./pages/MissionPage";
 import VisionPage from "./pages/VisionPage";
 import JoinUsPage from "./pages/JoinUsPage";
-
+import AutoJoinUsPopup from "./components/AutoJoinUsPopup";
 
 function App() {
   return (
@@ -25,7 +25,8 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    
+
+      <AutoJoinUsPopup />
     </>
   );
 }
