@@ -3,7 +3,7 @@
     {
       "title": "Speech and Language Therapy",
       "description": "We provide individualized support to enhance communication skills, language development, and speech clarity.\n\nHelping You Find Your Voice\n\nWe provide individualized support to enhance communication skills, language development, and speech clarity. Our therapy programs are tailored to meet the unique needs of each individual, ensuring steady progress in a supportive environment.\n\nKey Benefits:\n\n- Improved speech clarity\n- Enhanced communication skills\n- Personalized therapy plans\n- Support for all age groups",
-      "image": "/uploads/whatsapp-image-2026-04-29-at-9.44.07-pm-2-.jpeg",
+      "image": "/uploads/whatsapp-image-2026-04-29-at-9.44.07-pm.jpeg",
       "id": "speech-language-therapy"
     },
     {
@@ -11,6 +11,12 @@
       "title": "Occupational Therapy",
       "description": "Helping individuals develop essential life skills for better independence and daily functioning.\n\nOur Occupational Therapy focuses on improving motor skills, sensory processing, and everyday activities like dressing, eating, and self-care. We provide personalized therapy plans in a supportive environment to help each individual reach their full potential.\nPersonalized Therapy Plans tailored to individual goals\nExperienced & Certified Therapists\nChild-Friendly & Supportive Environment\nHolistic Development Approach",
       "image": "/uploads/whatsapp-image-2026-04-29-at-9.44.05-pm.jpeg"
+    },
+    {
+      "id": "remedial-education",
+      "title": "Remedial Education (Subject-wise)",
+      "description": "We offer focused academic support tailored to each subject.\n\nDescription:\nSubject-wise learning programs designed to strengthen fundamentals, clear doubts, and improve overall academic outcomes.\n\nBeyond academics, we help students grow holistically.\nActivities and sessions aimed at improving critical thinking, communication, and problem-solving skills.\n\nEvery child learns differently   and we respect that.\n\nDescription:\nCustomized lesson plans based on individual strengths and weaknesses to ensure effective learning.",
+      "image": "/uploads/whatsapp-image-2026-04-29-at-9.35.40-pm-1-.jpeg"
     }
   ]
 }
