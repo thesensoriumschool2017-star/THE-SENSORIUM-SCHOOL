@@ -2,6 +2,7 @@ backend:
   name: github
   repo: tiwari011/sensorium
   branch: main
+  site_domain: sensorium-theta.vercel.app
   base_url: https://sensorium-theta.vercel.app
   auth_endpoint: /api/auth
 
