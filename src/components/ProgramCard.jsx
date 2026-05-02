@@ -2,9 +2,7 @@ import { useState } from "react";
 
 function ProgramCard({ title, description, image, details }) {
   const [isOpen, setIsOpen] = useState(false);
-  const detailText =
-    details ||
-    "This is demo detailed content for this service. It explains how sessions are planned, what outcomes families can expect, how progress is monitored, and how the team customizes support for every child based on individual needs.";
+  const detailText = details ? String(details).trim() : "";
 
   return (
     <>
@@ -12,7 +10,17 @@ function ProgramCard({ title, description, image, details }) {
         <img src={image} alt={title} className="h-52 w-full object-cover" />
         <div className="space-y-3 p-5">
           <h3 className="text-2xl font-semibold text-stone-800">{title}</h3>
-          <p className="text-md leading-relaxed text-stone-600">{description}</p>
+          <p
+            className="text-md leading-relaxed text-stone-600"
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 4,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {description}
+          </p>
           <button
             type="button"
             onClick={() => setIsOpen(true)}
@@ -46,9 +54,11 @@ function ProgramCard({ title, description, image, details }) {
                   {description}
                 </p>
               ) : null}
-              <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-stone-600">
-                {detailText}
-              </p>
+              {detailText ? (
+                <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-stone-600">
+                  {detailText}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
