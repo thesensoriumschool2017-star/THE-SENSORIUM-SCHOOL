@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { code } = req.query || {};
+  const { code, state } = req.query || {};
   if (!code) {
     res.status(400).send("Missing ?code= from GitHub callback.");
     return;
@@ -51,7 +51,11 @@ export default async function handler(req, res) {
     }
 
     // Decap CMS expects a postMessage back to the opener window.
-    const payload = JSON.stringify({ token: tokenData.access_token });
+    const payload = JSON.stringify({
+      token: tokenData.access_token,
+      provider: "github",
+      state: state || undefined,
+    });
     const html = `<!doctype html>
 <html>
   <head><meta charset="utf-8" /></head>

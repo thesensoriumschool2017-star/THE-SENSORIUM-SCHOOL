@@ -18,6 +18,9 @@ export default function handler(req, res) {
   authorizeUrl.searchParams.set("client_id", clientId);
   authorizeUrl.searchParams.set("redirect_uri", redirectUri);
   authorizeUrl.searchParams.set("scope", "repo");
+  if (req?.query?.state) {
+    authorizeUrl.searchParams.set("state", String(req.query.state));
+  }
 
   res.writeHead(302, { Location: authorizeUrl.toString() });
   res.end();
