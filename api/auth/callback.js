@@ -59,8 +59,25 @@ export default async function handler(req, res) {
     <script>
       (function () {
         var msg = 'authorization:github:success:' + ${JSON.stringify(payload)};
-        window.opener && window.opener.postMessage(msg, ${JSON.stringify(baseUrl)});
-        window.close();
+        var baseUrl = ${JSON.stringify(baseUrl)};
+        var origins = [];
+        try {
+          origins.push(new URL(baseUrl).origin);
+        } catch (e) {}
+        origins.push(baseUrl);
+        origins.push('*');
+
+        if (window.opener) {
+          origins.forEach(function (target) {
+            try {
+              window.opener.postMessage(msg, target);
+            } catch (e) {}
+          });
+        }
+
+        setTimeout(function () {
+          window.close();
+        }, 250);
       })();
     </script>
   </body>
