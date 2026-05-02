@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -12,7 +12,7 @@ function HomePage() {
 
     impact_title: "Leadership & Impact",
     impact_points: [
-      "Founder of the Universal Empowerment Foundation, focused on advancing women’s representation and contributing to policy engagement at the governance level.",
+      "Founder of the The Sensorium School, focused on advancing womenâ€™s representation and contributing to policy engagement at the governance level.",
 "Leads inclusive initiatives for children with special needs, enabling independence, capability-building, and meaningful societal participation.",
 "Provides structured counselling and guidance for parents and children to support emotional well-being and holistic development.",
 "Sonika is committed to building inclusive systems where equity, dignity, and opportunity form the foundation of . ",
@@ -128,3 +128,4 @@ function HomePage() {
 }
 
 export default HomePage;
+
