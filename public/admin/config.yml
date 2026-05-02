@@ -4,7 +4,7 @@ backend:
   branch: main
   site_domain: sensorium-theta.vercel.app
   base_url: https://sensorium-theta.vercel.app
-  auth_endpoint: https://sensorium-theta.vercel.app/api/auth
+  auth_endpoint: api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
