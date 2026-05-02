@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
-import useContentJson from "../hooks/useContentJson";
 
 const INITIAL_VISIBLE_ITEMS = 9;
 
@@ -225,7 +224,35 @@ function GalleryPage() {
     })),
   };
 
-  const galleryContent = useContentJson("/content/gallery.json", fallbackGallery);
+  const [galleryContent, setGalleryContent] = useState({
+    title: "Photo Gallery",
+    subtitle: "Foundation Moments",
+    items: [],
+  });
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/content/gallery.json", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Content file not found"))))
+      .then((raw) => {
+        if (!active) return;
+        setGalleryContent(raw);
+      })
+      .catch(() => {
+        if (!active) return;
+        setGalleryContent(fallbackGallery);
+      })
+      .finally(() => {
+        if (active) setIsLoadingContent(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const items = useMemo(() => galleryContent.items || [], [galleryContent.items]);
 
   const imageItems = useMemo(() => items.filter((item) => item.type !== "video" && item.image), [items]);
@@ -257,7 +284,9 @@ function GalleryPage() {
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">{galleryContent.subtitle}</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
+              {galleryContent.subtitle}
+            </p>
             <h1 className="text-4xl font-bold">{galleryContent.title}</h1>
           </div>
           <Link to="/" className="rounded-full border border-amber-300 px-5 py-2 text-sm font-semibold text-amber-800 hover:bg-amber-100">
@@ -265,8 +294,14 @@ function GalleryPage() {
           </Link>
         </div>
 
-        <MediaSection title="Images" items={imageItems} emptyMessage="No images added yet." onOpen={openModal} />
-        <MediaSection title="Videos" items={videoItems} emptyMessage="No videos added yet." onOpen={openModal} />
+        {isLoadingContent ? (
+          <p className="mt-8 text-stone-600">Loading gallery...</p>
+        ) : (
+          <>
+            <MediaSection title="Images" items={imageItems} emptyMessage="No images added yet." onOpen={openModal} />
+            <MediaSection title="Videos" items={videoItems} emptyMessage="No videos added yet." onOpen={openModal} />
+          </>
+        )}
       </main>
       <Footer />
       <WhatsAppFloat />

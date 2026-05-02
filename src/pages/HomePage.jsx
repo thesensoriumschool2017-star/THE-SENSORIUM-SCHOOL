@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -6,6 +7,7 @@ import mainImage from "../assets/main.jpeg";
 import bannerImage from "../assets/banner.png";
 
 function HomePage() {
+  const [isPageReady, setIsPageReady] = useState(false);
   const fallbackHomeContent = {
 
     impact_title: "Leadership & Impact",
@@ -24,6 +26,43 @@ function HomePage() {
   };
 
   const homeContent = useContentJson("/content/home.json", fallbackHomeContent);
+
+  useEffect(() => {
+    let active = true;
+
+    const preloadImage = (src) =>
+      new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = src;
+      });
+
+    Promise.race([
+      Promise.all([preloadImage(bannerImage), preloadImage(mainImage)]),
+      new Promise((resolve) => setTimeout(resolve, 2500)),
+    ]).then(() => {
+      if (active) setIsPageReady(true);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  if (!isPageReady) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,#fffaf0_0%,#fff4db_45%,#fffdf7_100%)] text-stone-800">
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">The Sensorium School</p>
+          <h2 className="mt-3 text-2xl font-bold">Loading Experience...</h2>
+          <div className="mx-auto mt-5 h-2 w-44 overflow-hidden rounded-full bg-amber-100">
+            <div className="h-full w-1/2 animate-pulse rounded-full bg-amber-500" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
