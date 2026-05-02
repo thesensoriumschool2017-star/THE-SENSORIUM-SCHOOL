@@ -13,6 +13,13 @@ if (
   window.location.replace(`/admin/${window.location.hash}`);
 }
 
+if (typeof window !== "undefined" && window.netlifyIdentity) {
+  window.netlifyIdentity.on("login", () => {
+    window.location.href = "/admin/";
+  });
+  window.netlifyIdentity.init();
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
