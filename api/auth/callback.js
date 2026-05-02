@@ -72,6 +72,9 @@ export default async function handler(req, res) {
         origins.push('*');
 
         if (window.opener) {
+          try {
+            window.opener.localStorage.setItem('netlify-cms-user', ${JSON.stringify(payload)});
+          } catch (e) {}
           origins.forEach(function (target) {
             try {
               window.opener.postMessage(msg, target);
