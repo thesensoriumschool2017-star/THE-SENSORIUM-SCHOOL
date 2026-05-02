@@ -2,7 +2,7 @@ backend:
   name: github
   repo: tiwari011/sensorium
   branch: main
-  base_url: https://sensorium-sable.vercel.app
+  base_url: https://sensorium-theta.vercel.app
   auth_endpoint: api/auth
 
 media_folder: "public/uploads"
