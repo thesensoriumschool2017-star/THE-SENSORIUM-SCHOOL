@@ -1,11 +1,12 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { submitJoinUs } from "../lib/joinUs";
 
 function JoinUsPage() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", website: "" });
+  const formStartedAtRef = useRef(new Date().toISOString());
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
   async function onSubmit(e) {
@@ -19,15 +20,20 @@ function JoinUsPage() {
 
     try {
       setStatus({ state: "submitting", message: "" });
-      await submitJoinUs(form);
+      await submitJoinUs({ ...form, form_started_at: formStartedAtRef.current });
       setStatus({ state: "success", message: "Thanks! We received your details." });
-      setForm({ name: "", phone: "", email: "" });
+      setForm({ name: "", phone: "", email: "", website: "" });
+      formStartedAtRef.current = new Date().toISOString();
     } catch (err) {
       setStatus({
         state: "error",
         message:
           err?.message === "Missing VITE_JOINUS_WEBAPP_URL"
             ? "Join Us storage is not configured yet."
+            : err?.message === "RATE_LIMITED"
+              ? "Too many attempts. Please wait 10 minutes and try again."
+              : err?.message === "SPAM_DETECTED"
+                ? "Submission blocked. Please try again."
             : "Something went wrong. Please try again.",
       });
     }
@@ -67,6 +73,15 @@ function JoinUsPage() {
               value={form.email}
               onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
               className="rounded-xl border border-amber-200 px-4 py-3 outline-none ring-amber-300 focus:ring md:col-span-2"
+            />
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={(e) => setForm((p) => ({ ...p, website: e.target.value }))}
+              className="hidden"
+              aria-hidden="true"
             />
 
             {status.state !== "idle" ? (
