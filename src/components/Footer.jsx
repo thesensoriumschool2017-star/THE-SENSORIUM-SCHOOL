@@ -98,7 +98,7 @@ function Footer() {
             </p>
           </article>
 
-          <article className="overflow-hidden rounded-30px border border-[#f2d39a] bg-white p-4 shadow-[0_12px_30px_rgba(80,60,20,0.12)] md:p-5">
+          <article className="overflow-hidden rounded-[30px] border border-[#f2d39a] bg-white p-4 shadow-[0_12px_30px_rgba(80,60,20,0.12)] md:p-5">
             <div className="mx-auto w-fit rounded-full bg-linear-to-r from-[#ea3a86] to-[#d91f69] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white sm:px-5 sm:text-sm">
               Verification
             </div>

@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "cms": "npx netlify-cms-proxy-server",
     "build": "vite build",
     "preview": "vite preview"
   },

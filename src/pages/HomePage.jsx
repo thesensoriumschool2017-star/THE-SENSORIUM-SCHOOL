@@ -2,20 +2,26 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
-import useContentJson from "../hooks/useContentJson";
+import useCmsContent from "../hooks/useCmsContent";
 import mainImage from "../assets/main.jpeg";
 import bannerImage from "../assets/banner.png";
 
 function HomePage() {
   const [isPageReady, setIsPageReady] = useState(false);
+  const founderDeskParagraphs = [
+    "Since 2017, the organization has been committed to creating meaningful and sustainable impact within the social and developmental sector. With experience in Parent and Child Coaching and Empowering Minds with Empathy at THE SENSORIUM, the approach is centered on fostering supportive, inclusive, and emotionally enriching environments for individuals and families.",
+    "Through continued engagement as a Social Worker with Universal Empowerment Foundation and as a Pre-Vocational Trainer, the focus remains on empowering children—particularly those with special needs by equipping them with essential life skills and vocational competencies that enable independence and confidence.",
+    "The core mission is to promote inclusivity, champion empathy-driven practices, and create sustainable opportunities that uplift both children and women. By strengthening community support systems and encouraging holistic development, the vision is to contribute meaningfully toward building a more inclusive, equitable, and empowered society.",
+  ];
   const fallbackHomeContent = {
-
-    impact_title: "Leadership & Impact",
+    hero_title: "From the Founder's Desk",
+    intro_paragraphs: founderDeskParagraphs,
+    impact_title: "Leadership and Impact",
     impact_points: [
-      "Founder of the The Sensorium School, focused on advancing womenâ€™s representation and contributing to policy engagement at the governance level.",
-"Leads inclusive initiatives for children with special needs, enabling independence, capability-building, and meaningful societal participation.",
-"Provides structured counselling and guidance for parents and children to support emotional well-being and holistic development.",
-"Sonika is committed to building inclusive systems where equity, dignity, and opportunity form the foundation of . ",
+      "Founder of The Sensorium School, focused on advancing women's representation and contributing to policy engagement at the governance level.",
+      "Leads inclusive initiatives for children with special needs, enabling independence, capability-building, and meaningful societal participation.",
+      "Provides structured counselling and guidance for parents and children to support emotional well-being and holistic development.",
+      "Builds inclusive systems where equity, dignity, and opportunity form the foundation of progress.",
     ],
     closing_paragraph:
       "At her core, Sonika stands for a society where every child, every woman, every voice is valued, and where inclusion is not an after-thought but the very foundation of progress. Her journey is one of heart, purpose and relentless pursuit of a more inclusive Bharat.",
@@ -25,7 +31,18 @@ function HomePage() {
    
   };
 
-  const homeContent = useContentJson("/content/home.json", fallbackHomeContent);
+  const { content: homeContent } = useCmsContent({
+    query:
+      '*[_type == "homePage"][0]{hero_title, intro_paragraphs, impact_title, impact_points, closing_paragraph, follow_line, meet_title, meet_paragraph, founder_image_note, "founder_image": founder_image.asset->url}',
+    fallbackPath: "/content/home.json",
+    fallbackData: fallbackHomeContent,
+    normalize: (data) => ({
+      ...fallbackHomeContent,
+      ...(data || {}),
+      // Keep founder intro fixed to the exact approved text.
+      intro_paragraphs: founderDeskParagraphs,
+    }),
+  });
 
   useEffect(() => {
     let active = true;
@@ -89,7 +106,7 @@ function HomePage() {
                 {homeContent.hero_title}
               </h2>
 
-              {homeContent.intro_paragraphs?.map((paragraph) => (
+              {founderDeskParagraphs.map((paragraph) => (
                 <p key={paragraph} className="text-md leading-relaxed text-stone-700">
                   {paragraph}
                 </p>
@@ -110,7 +127,7 @@ function HomePage() {
             <div className="md:col-span-4">
               <div className="overflow-hidden rounded-2xl border border-amber-100 bg-amber-50">
                 <img
-                  src={mainImage}
+                  src={homeContent.founder_image || mainImage}
                   alt="Founder profile placeholder"
                   className="h-90 w-full object-cover"
                 />

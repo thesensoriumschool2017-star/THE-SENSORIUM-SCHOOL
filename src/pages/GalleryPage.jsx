@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
+import useCmsContent from "../hooks/useCmsContent";
 
 const INITIAL_VISIBLE_ITEMS = 9;
 
@@ -50,6 +51,14 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
     };
   }, [current]);
 
+  useEffect(() => {
+    const onEsc = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onEsc);
+    return () => document.removeEventListener("keydown", onEsc);
+  }, [onClose]);
+
   if (!current) return null;
 
   const isVideo = current.type === "video";
@@ -67,8 +76,11 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
   };
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 px-4 py-8">
-      <div className="relative w-full max-w-4xl rounded-2xl bg-[linear-gradient(155deg,#fff7ea_0%,#ffe8d4_100%)] p-4 shadow-2xl md:p-6">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 px-4 py-8" onClick={onClose}>
+      <div
+        className="relative w-full max-w-4xl rounded-2xl bg-[linear-gradient(155deg,#fff7ea_0%,#ffe8d4_100%)] p-4 shadow-2xl md:p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           onClick={onClose}
@@ -88,7 +100,7 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
                 allowFullScreen
               />
             ) : (
-              <video ref={videoRef} controls className="h-90 w-ull object-contain" src={videoSource}>
+              <video ref={videoRef} controls className="h-90 w-full object-contain" src={videoSource}>
                 Your browser does not support video playback.
               </video>
             )
@@ -224,36 +236,49 @@ function GalleryPage() {
     })),
   };
 
-  const [galleryContent, setGalleryContent] = useState({
-    title: "Photo Gallery",
-    subtitle: "Foundation Moments",
-    items: [],
+  const { content: galleryContent, isLoading } = useCmsContent({
+    query:
+      '*[_type == "galleryPage"] | order(_updatedAt desc){title, subtitle, "items": items[]{_key, id, type, caption, "image": image.asset->url, "video": video.asset->url, video_url}}',
+    fallbackPath: "/content/gallery.json",
+    fallbackData: fallbackGallery,
+    startWithFallback: false,
+    normalize: (data) => {
+      const docs = Array.isArray(data) ? data : data ? [data] : [];
+      if (!docs.length) return fallbackGallery;
+
+      const latestDoc = docs[0] || {};
+      const incoming = docs.flatMap((doc) => (Array.isArray(doc?.items) ? doc.items : []));
+      const normalizedItems = incoming
+        .map((item, index) => {
+          const hasImage = Boolean(item?.image);
+          const hasVideo = Boolean(item?.video || item?.video_url);
+          let inferredType = item?.type || (hasVideo ? "video" : hasImage ? "image" : "");
+
+          // If selected type and uploaded field mismatch, auto-correct it.
+          if (inferredType === "video" && !hasVideo && hasImage) inferredType = "image";
+          if (inferredType !== "video" && !hasImage && hasVideo) inferredType = "video";
+
+          return {
+            id: item?.id || item?._key || `gallery-${index + 1}`,
+            type: inferredType,
+            caption: item?.caption || `${inferredType === "video" ? "Video" : "Image"} ${index + 1}`,
+            image: item?.image || "",
+            video: item?.video || "",
+            video_url: item?.video_url || "",
+          };
+        })
+        .filter((item) => item.type && (item.image || item.video || item.video_url));
+
+      if (!normalizedItems.length) return fallbackGallery;
+      return {
+        title: latestDoc?.title || fallbackGallery.title,
+        subtitle: latestDoc?.subtitle || fallbackGallery.subtitle,
+        items: normalizedItems,
+      };
+    },
   });
-  const [isLoadingContent, setIsLoadingContent] = useState(true);
 
-  useEffect(() => {
-    let active = true;
-
-    fetch("/content/gallery.json", { cache: "no-store" })
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Content file not found"))))
-      .then((raw) => {
-        if (!active) return;
-        setGalleryContent(raw);
-      })
-      .catch(() => {
-        if (!active) return;
-        setGalleryContent(fallbackGallery);
-      })
-      .finally(() => {
-        if (active) setIsLoadingContent(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  const items = useMemo(() => galleryContent.items || [], [galleryContent.items]);
+  const items = useMemo(() => galleryContent?.items || [], [galleryContent?.items]);
 
   const imageItems = useMemo(() => items.filter((item) => item.type !== "video" && item.image), [items]);
   const videoItems = useMemo(() => items.filter((item) => item.type === "video" && (item.video || item.video_url)), [items]);
@@ -285,17 +310,17 @@ function GalleryPage() {
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
-              {galleryContent.subtitle}
+              {galleryContent?.subtitle || fallbackGallery.subtitle}
             </p>
-            <h1 className="text-4xl font-bold">{galleryContent.title}</h1>
+            <h1 className="text-4xl font-bold">{galleryContent?.title || fallbackGallery.title}</h1>
           </div>
           <Link to="/" className="rounded-full border border-amber-300 px-5 py-2 text-sm font-semibold text-amber-800 hover:bg-amber-100">
             Back to Home
           </Link>
         </div>
 
-        {isLoadingContent ? (
-          <p className="mt-8 text-stone-600">Loading gallery...</p>
+        {isLoading ? (
+          <p className="text-md text-stone-600">Loading gallery...</p>
         ) : (
           <>
             <MediaSection title="Images" items={imageItems} emptyMessage="No images added yet." onOpen={openModal} />

@@ -1,10 +1,3 @@
-ï»¿export const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Programs", href: "#programs" },
-  { label: "Stories", href: "#stories" },
-  { label: "Contact", href: "#contact" },
-];
-
 export const defaultPrograms = [
   {
     id: "speech-language-therapy",
@@ -40,15 +33,15 @@ export const defaultPrograms = [
     id: "special-education-support",
     title: "Special Education Support",
     description:
-      "Every childâ€™s learning journey is unique. We provide structured and personalized intervention plans tailored to meet each learnerâ€™s developmental and educational needs.",
+      "Every child’s learning journey is unique. We provide structured and personalized intervention plans tailored to meet each learner’s developmental and educational needs.",
     image:
       "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80",
     details:
-      "Our Services:\n\n- Individualized Learning Programs\n- Behavioral & Skill Development Support\n- Inclusive Classroom Strategies\n- One-on-One Guidance\n- Progress Monitoring & Parent Support\n\nAge Group: 3+ to 17 years\nTimings: 10:00 AM â€“ 7:00 PM\n\nWhy Choose Us?\n\n- Experienced Educators\n- Child-Centered Approach\n- Safe & Supportive Environment\n- Focus on Holistic Development",
+      "Our Services:\n\n- Individualized Learning Programs\n- Behavioral & Skill Development Support\n- Inclusive Classroom Strategies\n- One-on-One Guidance\n- Progress Monitoring & Parent Support\n\nAge Group: 3+ to 17 years\nTimings: 10:00 AM – 7:00 PM\n\nWhy Choose Us?\n\n- Experienced Educators\n- Child-Centered Approach\n- Safe & Supportive Environment\n- Focus on Holistic Development",
   },
   {
     id: "vocational-training",
-    title: "Pre-Vocational Computer Course with Personality Development â€“ The Sensorium",
+    title: "Pre-Vocational Computer Course with Personality Development – The Sensorium",
     description:
       "This course is designed to build essential digital skills, confidence, and professional abilities needed in today's world.",
     image:
@@ -58,7 +51,7 @@ export const defaultPrograms = [
   },
   {
     id: "day-care-services",
-    title: "Day Care Services â€“ The Sensorium",
+    title: "Day Care Services – The Sensorium",
     description:
       "Our Day Care Center provides a safe, comfortable, and caring environment where children receive proper care and attention throughout the day.",
     image:
@@ -93,4 +86,3 @@ export const galleryPhotos = [
     alt: "Food support distribution event",
   },
 ];
-

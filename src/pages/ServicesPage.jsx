@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ServicesSection from "../components/ServicesSection";
 import WhatsAppFloat from "../components/WhatsAppFloat";
-import useContentJson from "../hooks/useContentJson";
+import useCmsContent from "../hooks/useCmsContent";
 
 function ServicesPage() {
   const fallbackServicesPage = {
@@ -11,7 +11,21 @@ function ServicesPage() {
     intro: "We offer an integrated range of therapeutic and educational services, including:",
   };
 
-  const pageContent = useContentJson("/content/services-page.json", fallbackServicesPage);
+  const { content: pageContent } = useCmsContent({
+    query: '*[_type == "servicesPage"] | order(_updatedAt desc)[0]{title, subtitle, intro}',
+    fallbackPath: "/content/services-page.json",
+    fallbackData: fallbackServicesPage,
+    normalize: (data) => {
+      const title = String(data?.title || "").trim();
+      const intro = String(data?.intro || "").trim();
+      return {
+        ...fallbackServicesPage,
+        ...(data || {}),
+        title: title || fallbackServicesPage.title,
+        intro: intro || fallbackServicesPage.intro,
+      };
+    },
+  });
 
   return (
     <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">

@@ -4,16 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
-if (typeof window !== "undefined" && window.netlifyIdentity) {
-  const isAdminPath = window.location.pathname.startsWith("/admin");
-  if (isAdminPath) {
-    window.netlifyIdentity.on("login", () => {
-      window.location.href = "/admin/";
-    });
-  }
-  window.netlifyIdentity.init();
-}
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
