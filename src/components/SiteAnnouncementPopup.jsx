@@ -18,6 +18,7 @@ function SiteAnnouncementPopup() {
     title: "",
     message: "",
     image: "",
+    images: [],
     video_url: "",
     button_text: "",
     button_link: "",
@@ -25,15 +26,25 @@ function SiteAnnouncementPopup() {
 
   const { content: popupContent } = useCmsContent({
     query:
-      '*[_type == "sitePopup" && enabled == true] | order(_updatedAt desc)[0]{enabled, title, message, "image": image.asset->url, video_url, button_text, button_link}',
+      '*[_type == "sitePopup" && enabled == true] | order(_updatedAt desc)[0]{enabled, title, message, "image": image.asset->url, "images": images[]{ "url": asset->url }, video_url, button_text, button_link}',
     fallbackPath: "/content/popup.json",
     fallbackData: fallbackPopup,
     normalize: (data) => data || fallbackPopup,
   });
   const [isVisible, setIsVisible] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const enabled = Boolean(popupContent.enabled);
   const showPopup = useMemo(() => enabled, [enabled]);
+  const sliderImages = useMemo(() => {
+    const many = Array.isArray(popupContent.images)
+      ? popupContent.images.map((img) => img?.url).filter(Boolean)
+      : [];
+    if (many.length) return many;
+    return popupContent.image ? [popupContent.image] : [];
+  }, [popupContent.images, popupContent.image]);
+  const hasSlider = sliderImages.length > 0;
+  const hasMultipleSlides = sliderImages.length > 1;
 
   useEffect(() => {
     if (!showPopup) {
@@ -51,9 +62,29 @@ function SiteAnnouncementPopup() {
     return () => clearTimeout(timer);
   }, [showPopup, location.pathname]);
 
+  useEffect(() => {
+    setActiveSlide(0);
+  }, [popupContent?.title, sliderImages.length]);
+
+  useEffect(() => {
+    if (!isVisible || !hasMultipleSlides) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isVisible, hasMultipleSlides, sliderImages.length]);
+
   const closePopup = () => {
     sessionStorage.setItem(SESSION_KEY, "1");
     setIsVisible(false);
+  };
+
+  const goPrev = () => {
+    setActiveSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+  };
+
+  const goNext = () => {
+    setActiveSlide((prev) => (prev + 1) % sliderImages.length);
   };
 
   if (!isVisible || !showPopup) return null;
@@ -80,12 +111,45 @@ function SiteAnnouncementPopup() {
             <p className="whitespace-pre-line text-md leading-relaxed text-stone-700">{popupContent.message}</p>
           ) : null}
 
-          {popupContent.image ? (
-            <img
-              src={popupContent.image}
-              alt={popupContent.title || "Announcement"}
-              className="mt-5 max-h-[420px] w-full rounded-2xl border border-amber-200 object-cover"
-            />
+          {hasSlider ? (
+            <div className="relative mt-5">
+              <img
+                src={sliderImages[activeSlide]}
+                alt={popupContent.title || "Announcement"}
+                className="max-h-[420px] w-full rounded-2xl border border-amber-200 object-cover"
+              />
+              {hasMultipleSlides ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={goPrev}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/45 px-3 py-2 text-lg text-white hover:bg-black/60"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    onClick={goNext}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/45 px-3 py-2 text-lg text-white hover:bg-black/60"
+                  >
+                    ›
+                  </button>
+                  <div className="mt-3 flex justify-center gap-2">
+                    {sliderImages.map((_, idx) => (
+                      <button
+                        key={`slide-dot-${idx}`}
+                        type="button"
+                        aria-label={`Go to slide ${idx + 1}`}
+                        onClick={() => setActiveSlide(idx)}
+                        className={`h-2.5 w-2.5 rounded-full ${idx === activeSlide ? "bg-amber-600" : "bg-amber-300"}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </div>
           ) : null}
 
           {popupContent.video_url ? (

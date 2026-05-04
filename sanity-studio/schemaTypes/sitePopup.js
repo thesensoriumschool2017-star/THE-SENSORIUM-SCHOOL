@@ -27,6 +27,13 @@ export default {
       options: { hotspot: true },
     },
     {
+      name: "images",
+      title: "Slider Images",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+      description: "Add multiple images here to show an auto-sliding gallery in popup.",
+    },
+    {
       name: "video_url",
       title: "Video URL (YouTube or direct)",
       type: "url",
@@ -57,4 +64,3 @@ export default {
     },
   },
 };
-
