@@ -1,25 +1,5 @@
 {
-  "title": "Our Blog",
-  "subtitle": "Stories, updates and learning insights from The Sensorium School.",
-  "posts": [
-    {
-      "slug": "welcome-to-our-blog",
-      "title": "Welcome to Our Blog",
-      "publish_date": "2026-05-04",
-      "published": true,
-      "cover_image": "/uploads/whatsapp-image-2026-04-29-at-9.44.07-pm.jpeg",
-      "excerpt": "We are starting this blog section to share meaningful updates, activities, and learning journeys from our community.",
-      "sections": [
-        {
-          "heading": "Why This Blog",
-          "text": "This space will help parents, students, and supporters stay connected with our day-to-day progress and important announcements."
-        },
-        {
-          "heading": "What You Will See Here",
-          "text": "You will find activity highlights, student milestones, workshops, and expert guidance posts.",
-          "image": "/uploads/whatsapp-image-2026-04-29-at-9.44.06-pm.jpeg"
-        }
-      ]
-    }
-  ]
+  "title": "Blog",
+  "subtitle": "",
+  "posts": []
 }
