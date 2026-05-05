@@ -10,9 +10,34 @@ const INITIAL_VISIBLE_ITEMS = 9;
 
 function toYoutubeEmbed(url) {
   if (!url) return "";
-  const regExp = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&?/]+)/;
-  const match = url.match(regExp);
-  return match?.[1] ? `https://www.youtube.com/embed/${match[1]}` : url;
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace("www.", "");
+
+    if (host === "youtu.be") {
+      const id = parsed.pathname.split("/").filter(Boolean)[0];
+      return id ? `https://www.youtube.com/embed/${id}` : "";
+    }
+
+    if (host === "youtube.com" || host === "m.youtube.com") {
+      const pathParts = parsed.pathname.split("/").filter(Boolean);
+      const pathType = pathParts[0];
+
+      if (pathType === "watch") {
+        const id = parsed.searchParams.get("v");
+        return id ? `https://www.youtube.com/embed/${id}` : "";
+      }
+
+      if (pathType === "shorts" || pathType === "live" || pathType === "embed") {
+        const id = pathParts[1];
+        return id ? `https://www.youtube.com/embed/${id}` : "";
+      }
+    }
+
+    return "";
+  } catch {
+    return "";
+  }
 }
 
 function isYoutubeUrl(url = "") {
@@ -63,7 +88,7 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
 
   const isVideo = current.type === "video";
   const youtubeEmbed = current.video_url ? toYoutubeEmbed(current.video_url) : "";
-  const usesYoutube = Boolean(current.video_url && isYoutubeUrl(current.video_url));
+  const usesYoutube = Boolean(current.video_url && isYoutubeUrl(current.video_url) && youtubeEmbed);
   const videoSource = getVideoSource(current);
 
   const togglePlayPause = () => {
@@ -97,9 +122,15 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
                 allowFullScreen
               />
             ) : (
-              <video ref={videoRef} controls className="h-90 w-full object-contain" src={videoSource}>
-                Your browser does not support video playback.
-              </video>
+              videoSource ? (
+                <video ref={videoRef} controls className="h-90 w-full object-contain" src={videoSource}>
+                  Your browser does not support video playback.
+                </video>
+              ) : (
+                <div className="flex h-90 w-full items-center justify-center bg-stone-100 px-4 text-center text-stone-600">
+                  Video cannot be embedded. Please use a direct video file URL or a valid YouTube link.
+                </div>
+              )
             )
           ) : (
             <img
@@ -177,7 +208,7 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
               className="overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#fff8ec_0%,#ffe9d8_100%)] text-left shadow-sm"
             >
               {item.type === "video" ? (
-                item.video_url && isYoutubeUrl(item.video_url) ? (
+                item.video_url && isYoutubeUrl(item.video_url) && toYoutubeEmbed(item.video_url) ? (
                   <iframe
                     src={toYoutubeEmbed(item.video_url)}
                     title={item.caption || "Gallery video"}
@@ -186,9 +217,15 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
                     allowFullScreen
                   />
                 ) : (
-                  <video className="h-56 w-full object-cover" src={getVideoSource(item)} muted>
-                    Your browser does not support video playback.
-                  </video>
+                  getVideoSource(item) ? (
+                    <video className="h-56 w-full object-cover" src={getVideoSource(item)} muted>
+                      Your browser does not support video playback.
+                    </video>
+                  ) : (
+                    <div className="flex h-56 w-full items-center justify-center bg-stone-200 px-3 text-center text-sm text-stone-600">
+                      Invalid video link
+                    </div>
+                  )
                 )
               ) : (
                 <img
