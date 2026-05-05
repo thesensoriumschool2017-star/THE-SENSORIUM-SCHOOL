@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import PageDecoration from "../components/PageDecoration";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
@@ -61,8 +62,9 @@ function BlogDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+      <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
         <Navbar />
+      <PageDecoration />
         <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
           <p className="text-md text-stone-600">Loading blog...</p>
         </main>
@@ -77,8 +79,9 @@ function BlogDetailPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+    <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
+      <PageDecoration />
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
         <div className="mb-8">
           <Link to="/blog" className="text-sm font-semibold text-amber-700 hover:underline">
@@ -99,7 +102,7 @@ function BlogDetailPage() {
         {post.excerpt ? <p className="mb-6 text-lg leading-relaxed text-stone-700">{post.excerpt}</p> : null}
 
         <div className="space-y-6">
-          {(Array.isArray(post.sections) ? post.sections : []).map((section, index) => (
+          {visibleSections.map((section, index) => (
             <section key={`${section?.heading || "section"}-${index}`} className="rounded-2xl border border-amber-200 bg-[#fff7ea] p-5">
               {section?.heading ? <h2 className="text-2xl font-semibold text-stone-900">{section.heading}</h2> : null}
               {section?.text ? <p className="mt-3 whitespace-pre-line text-md leading-relaxed text-stone-700">{section.text}</p> : null}
@@ -128,3 +131,5 @@ function BlogDetailPage() {
 }
 
 export default BlogDetailPage;
+
+

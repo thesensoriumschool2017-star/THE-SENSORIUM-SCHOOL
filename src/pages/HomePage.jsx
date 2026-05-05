@@ -1,6 +1,7 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
 import mainImage from "../assets/main.jpeg";
@@ -10,7 +11,7 @@ function HomePage() {
   const [isPageReady, setIsPageReady] = useState(false);
   const founderDeskParagraphs = [
     "Since 2017, the organization has been committed to creating meaningful and sustainable impact within the social and developmental sector. With experience in Parent and Child Coaching and Empowering Minds with Empathy at THE SENSORIUM, the approach is centered on fostering supportive, inclusive, and emotionally enriching environments for individuals and families.",
-    "Through continued engagement as a Social Worker with Universal Empowerment Foundation and as a Pre-Vocational Trainer, the focus remains on empowering children—particularly those with special needs by equipping them with essential life skills and vocational competencies that enable independence and confidence.",
+    "Through continued engagement as a Social Worker with Universal Empowerment Foundation and as a Pre-Vocational Trainer, the focus remains on empowering children - particularly those with special needs by equipping them with essential life skills and vocational competencies that enable independence and confidence.",
     "The core mission is to promote inclusivity, champion empathy-driven practices, and create sustainable opportunities that uplift both children and women. By strengthening community support systems and encouraging holistic development, the vision is to contribute meaningfully toward building a more inclusive, equitable, and empowered society.",
   ];
   const fallbackHomeContent = {
@@ -73,7 +74,7 @@ function HomePage() {
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">The Sensorium School</p>
           <h2 className="mt-3 text-2xl font-bold">Loading Experience...</h2>
-          <div className="mx-auto mt-5 h-2 w-44 overflow-hidden rounded-full bg-amber-100">
+          <div className="mx-auto mt-5 h-2 w-44 overflow-x-hidden rounded-full bg-amber-100">
             <div className="h-full w-1/2 animate-pulse rounded-full bg-amber-500" />
           </div>
         </div>
@@ -84,11 +85,13 @@ function HomePage() {
   return (
     <div
       id="home"
-      className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff4db_45%,#fffdf7_100%)] text-stone-800"
+      className="home-bg relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff4db_45%,#fffdf7_100%)] text-stone-800"
     >
+      <PageDecoration />
+
       <Navbar />
 
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
         <section className="mx-auto w-full max-w-6xl px-4 pb-8 pt-10 md:px-6">
           <div className="group overflow-hidden rounded-3xl border border-amber-200 bg-[linear-gradient(145deg,#fff7e8_0%,#ffe9d1_100%)] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(180,120,20,0.22)]">
             <img
@@ -125,7 +128,7 @@ function HomePage() {
             </div>
 
             <div className="md:col-span-4">
-              <div className="overflow-hidden rounded-2xl border border-amber-100 bg-amber-50">
+              <div className="overflow-x-hidden rounded-2xl border border-amber-100 bg-amber-50">
                 <img
                   src={homeContent.founder_image || mainImage}
                   alt="Founder profile placeholder"
@@ -145,4 +148,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
 import useCmsContent from "../hooks/useCmsContent";
@@ -77,10 +78,7 @@ function MediaModal({ items, currentIndex, onClose, onPrev, onNext }) {
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 px-4 py-8" onClick={onClose}>
-      <div
-        className="relative w-full max-w-4xl rounded-2xl bg-[linear-gradient(155deg,#fff7ea_0%,#ffe8d4_100%)] p-4 shadow-2xl md:p-6"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="relative w-full max-w-4xl rounded-2xl bg-[linear-gradient(155deg,#fff7ea_0%,#ffe8d4_100%)] p-4 shadow-2xl md:p-6" onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           onClick={onClose}
@@ -170,19 +168,14 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
         <h2 className="text-3xl font-bold">{title}</h2>
       </div>
 
-      <div
-        className={
-          "rounded-2xl border border-amber-100 p-2 " +
-          (expanded ? "max-h-190 overflow-y-auto" : "overflow-hidden")
-        }
-      >
+      <div className={"rounded-2xl p-2 " + (expanded ? "max-h-190 overflow-y-auto" : "overflow-hidden")}>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {visibleItems.map((item, index) => (
             <button
               key={item.id || `${item.type}-${index}`}
               type="button"
               onClick={() => onOpen(item.id)}
-                    className="overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#fff8ec_0%,#ffe9d8_100%)] text-left shadow-sm"
+              className="overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#fff8ec_0%,#ffe9d8_100%)] text-left shadow-sm"
             >
               {item.type === "video" ? (
                 item.video_url && isYoutubeUrl(item.video_url) ? (
@@ -304,8 +297,9 @@ function GalleryPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+    <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
+      <PageDecoration />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -339,3 +333,5 @@ function GalleryPage() {
 }
 
 export default GalleryPage;
+
+

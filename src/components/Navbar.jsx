@@ -37,7 +37,8 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-amber-200 bg-amber-50.5/90 backdrop-blur">
+    <>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/80 bg-amber-50/85 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-3 py-4 md:px-4">
         <a href="/" className="whitespace-nowrap text-xl font-bold tracking-tight text-stone-800">
           THE SENSORIUM SCHOOL
@@ -112,7 +113,7 @@ function Navbar() {
       </div>
 
       {isMenuOpen ? (
-        <div className="border-t border-amber-100 bg-amber-50 px-4 py-3 lg:hidden">
+        <div className="border-t border-amber-100/90 bg-amber-50/95 px-4 py-3 backdrop-blur-md lg:hidden">
           <nav className="flex flex-col gap-2 text-base font-semibold text-stone-700">
             {links.map((link) => (
               <Link
@@ -151,6 +152,8 @@ function Navbar() {
         </div>
       ) : null}
     </header>
+    <div className="h-[76px] md:h-[84px]" />
+    </>
   );
 }
 

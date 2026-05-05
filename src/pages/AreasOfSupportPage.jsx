@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useContentJson from "../hooks/useContentJson";
 
@@ -22,8 +23,9 @@ function AreasOfSupportPage() {
   const areasContent = useContentJson("/content/areas.json", fallbackAreas);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+    <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
+      <PageDecoration />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
       
         <h1 className="mt-2 text-4xl font-bold">{areasContent.title}</h1>
@@ -53,3 +55,5 @@ function AreasOfSupportPage() {
 }
 
 export default AreasOfSupportPage;
+
+

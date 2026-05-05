@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import PageDecoration from "../components/PageDecoration";
 import ServicesSection from "../components/ServicesSection";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
@@ -28,8 +29,9 @@ function ServicesPage() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+    <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
+      <PageDecoration />
       <main className="flex-1 py-14">
         <section className="mx-auto w-full max-w-6xl px-4 pb-10 md:px-6">
         
@@ -52,3 +54,5 @@ function ServicesPage() {
 }
 
 export default ServicesPage;
+
+

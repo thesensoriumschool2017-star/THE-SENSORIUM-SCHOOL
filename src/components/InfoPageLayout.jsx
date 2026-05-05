@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import PageDecoration from "./PageDecoration";
 import WhatsAppFloat from "./WhatsAppFloat";
 
 function InfoPageLayout({ title, subtitle, body }) {
   return (
-    <div className="flex min-h-screen flex-col bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
+    <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
       <Navbar />
+      <PageDecoration />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
           {subtitle}
@@ -29,3 +31,5 @@ function InfoPageLayout({ title, subtitle, body }) {
 }
 
 export default InfoPageLayout;
+
+

@@ -1,11 +1,10 @@
-﻿import registrationCertificateQr from "../assets/registraion-certifiate.jpeg.png";
 import schoolLogo from "../assets/logo.png";
 
 function Footer() {
   return (
     <footer className="border-t border-[#f0c46b] bg-[#f6f1e4] text-stone-800">
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 md:px-8 md:py-14">
-        <div className="grid gap-6 md:gap-8 xl:grid-cols-[1.15fr_1fr_0.95fr_0.95fr] xl:gap-6">
+        <div className="grid gap-6 md:gap-8 xl:grid-cols-[1.15fr_1fr_0.95fr] xl:gap-6">
           <section className="flex flex-col items-center justify-center text-center xl:pr-4">
             <img
               src={schoolLogo}
@@ -74,7 +73,6 @@ function Footer() {
               </div>
             </div>
           </section>
-
           <article className="overflow-hidden rounded-[30px] border border-[#f2d39a] bg-white p-4 shadow-[0_12px_30px_rgba(80,60,20,0.12)] md:p-5">
             <div className="mx-auto w-fit rounded-full bg-linear-to-r from-[#f9b006] to-[#f28d00] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white sm:px-5 sm:text-sm">
               Location
@@ -97,29 +95,11 @@ function Footer() {
               Open Maps instantly
             </p>
           </article>
-
-          <article className="overflow-hidden rounded-[30px] border border-[#f2d39a] bg-white p-4 shadow-[0_12px_30px_rgba(80,60,20,0.12)] md:p-5">
-            <div className="mx-auto w-fit rounded-full bg-linear-to-r from-[#ea3a86] to-[#d91f69] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white sm:px-5 sm:text-sm">
-              Verification
-            </div>
-            <h5 className="mt-4 text-center text-xl font-bold uppercase leading-tight sm:text-xl">Registration Certificate</h5>
-            <div className="mx-auto mt-3 h-1 w-20 rounded bg-[#e5307a]" />
-            <div className="mx-auto mt-5 w-fit rounded-[26px] border-2 border-[#eb4a8a] p-2">
-              <img
-                src={registrationCertificateQr}
-                alt="Registration certificate QR"
-                className="h-36 w-36 rounded-2xl object-cover sm:h-44 sm:w-44"
-              />
-            </div>
-            <p className="mt-4 rounded-2xl bg-[#f5e6ee] px-4 py-3 text-center text-sm font-medium text-stone-700 sm:text-base">
-              Scan to verify certificate
-            </p>
-          </article>
         </div>
 
         <div className="mt-10 border-t border-[#efb55f] pt-5">
           <div className="flex flex-col items-center gap-4 text-sm sm:text-base md:flex-row md:justify-between">
-            <p className="text-center text-stone-700 md:text-left">© 2026 The Sensorium School. All rights reserved.</p>
+            <p className="text-center text-stone-700 md:text-left">&copy; 2026 The Sensorium School. All rights reserved.</p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
               <span className="font-semibold uppercase tracking-wide text-stone-700">Follow Us</span>
@@ -143,3 +123,8 @@ function Footer() {
 }
 
 export default Footer;
+
+
+
+
+
