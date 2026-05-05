@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
 import mainImage from "../assets/main.jpeg";
 import bannerImage from "../assets/banner.png";
+import founderCardBgMain from "../assets/founder-card-bg-main.png";
 
 function HomePage() {
   const [isPageReady, setIsPageReady] = useState(false);
@@ -87,23 +87,35 @@ function HomePage() {
       id="home"
       className="home-bg relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff4db_45%,#fffdf7_100%)] text-stone-800"
     >
-      <PageDecoration />
-
       <Navbar />
 
       <main className="relative z-10 flex-1">
         <section className="mx-auto w-full max-w-6xl px-4 pb-8 pt-10 md:px-6">
-          <div className="group overflow-hidden rounded-3xl border border-amber-200 bg-[linear-gradient(145deg,#fff7e8_0%,#ffe9d1_100%)] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(180,120,20,0.22)]">
+          <div className="group overflow-hidden rounded-3xl border border-amber-300 bg-[#fff7e8] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(180,120,20,0.22)]">
             <img
               src={bannerImage}
               alt="Foundation banner"
-              className="w-full bg-[#fff4df] object-contain transition duration-500 group-hover:scale-[1.02]"
+              className="block w-full object-cover transition duration-500 group-hover:scale-[1.02]"
             />
           </div>
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-4 pb-20 md:px-6">
-          <div className="grid gap-6 rounded-3xl border border-amber-200 bg-[linear-gradient(150deg,#fff7e9_0%,#ffe8d3_100%)] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(180,120,20,0.22)] md:grid-cols-12 md:p-8">
+          <div className="relative overflow-hidden rounded-3xl border border-[#f0c46b] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(180,120,20,0.22)] md:p-8">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${founderCardBgMain})` }}
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,rgba(255,248,236,0.72)_0%,rgba(255,244,230,0.66)_45%,rgba(255,239,219,0.72)_100%)]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_35%,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.12)_45%,transparent_70%),radial-gradient(circle_at_78%_20%,rgba(255,255,255,0.20)_0%,transparent_52%)]"
+            />
+            <div className="relative z-10 grid gap-6 md:grid-cols-12">
             <div className="md:col-span-8 space-y-4">
               <h2 className="text-3xl font-bold leading-tight md:text-4xl">
                 {homeContent.hero_title}
@@ -132,10 +144,11 @@ function HomePage() {
                 <img
                   src={homeContent.founder_image || mainImage}
                   alt="Founder profile placeholder"
-                  className="h-90 w-full object-cover"
+                  className="h-[340px] w-full object-cover md:h-[420px]"
                 />
                 
               </div>
+            </div>
             </div>
           </div>
         </section>
@@ -148,6 +161,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
 
 
 

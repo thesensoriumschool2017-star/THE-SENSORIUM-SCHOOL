@@ -38,7 +38,7 @@ function Navbar() {
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/80 bg-amber-50/85 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/80 bg-amber-49/85 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-3 py-4 md:px-4">
         <a href="/" className="whitespace-nowrap text-xl font-bold tracking-tight text-stone-800">
           THE SENSORIUM SCHOOL

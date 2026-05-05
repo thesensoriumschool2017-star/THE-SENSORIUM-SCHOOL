@@ -1,6 +1,5 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { useRef, useState } from "react";
 import { submitJoinUs } from "../lib/joinUs";
@@ -42,9 +41,7 @@ function JoinUsPage() {
 
   return (
     <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
-      <Navbar />
-      <PageDecoration />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
+      <Navbar />      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
           Get Involved
         </p>
@@ -114,5 +111,6 @@ function JoinUsPage() {
 }
 
 export default JoinUsPage;
+
 
 

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import PageDecoration from "../components/PageDecoration";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
 import useCmsContent from "../hooks/useCmsContent";
@@ -241,7 +240,8 @@ function GalleryPage() {
 
       const latestDoc = docs[0] || {};
       const incoming = docs.flatMap((doc) => (Array.isArray(doc?.items) ? doc.items : []));
-      const normalizedItems = incoming
+      const normalizedItems = [...incoming]
+        .reverse()
         .map((item, index) => {
           const hasImage = Boolean(item?.image);
           const hasVideo = Boolean(item?.video || item?.video_url);
@@ -298,9 +298,7 @@ function GalleryPage() {
 
   return (
     <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
-      <Navbar />
-      <PageDecoration />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
+      <Navbar />      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-14 md:px-6">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
@@ -333,5 +331,6 @@ function GalleryPage() {
 }
 
 export default GalleryPage;
+
 
 

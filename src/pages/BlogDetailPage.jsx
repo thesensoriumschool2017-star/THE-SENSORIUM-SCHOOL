@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import PageDecoration from "../components/PageDecoration";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
@@ -63,9 +62,7 @@ function BlogDetailPage() {
   if (isLoading) {
     return (
       <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
-        <Navbar />
-      <PageDecoration />
-        <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
+        <Navbar />        <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
           <p className="text-md text-stone-600">Loading blog...</p>
         </main>
         <Footer />
@@ -80,9 +77,7 @@ function BlogDetailPage() {
 
   return (
     <div className="relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[linear-gradient(180deg,#fffaf0_0%,#fff6e3_100%)] text-stone-800">
-      <Navbar />
-      <PageDecoration />
-      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
+      <Navbar />      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-14 md:px-6">
         <div className="mb-8">
           <Link to="/blog" className="text-sm font-semibold text-amber-700 hover:underline">
             Back to Blogs
@@ -131,5 +126,6 @@ function BlogDetailPage() {
 }
 
 export default BlogDetailPage;
+
 
 

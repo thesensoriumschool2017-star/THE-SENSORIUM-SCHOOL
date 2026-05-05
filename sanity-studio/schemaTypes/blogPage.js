@@ -47,6 +47,11 @@ export default {
               description: "Example: 2026-05-04",
             },
             {
+              name: "author_name",
+              title: "Author Name",
+              type: "string",
+            },
+            {
               name: "published",
               title: "Published",
               type: "boolean",
@@ -63,6 +68,28 @@ export default {
               title: "Excerpt",
               type: "text",
               rows: 4,
+            },
+            {
+              name: "tags",
+              title: "Tags",
+              type: "array",
+              of: [{ type: "string" }],
+              options: {
+                layout: "tags",
+              },
+            },
+            {
+              name: "table_of_contents",
+              title: "Table of Contents",
+              type: "array",
+              of: [{ type: "string" }],
+              description: "Optional manual table of contents items.",
+            },
+            {
+              name: "quote",
+              title: "Highlight Quote",
+              type: "text",
+              rows: 3,
             },
             {
               name: "sections",
@@ -99,6 +126,21 @@ export default {
                 },
               ],
             },
+            {
+              name: "cta_title",
+              title: "CTA Title",
+              type: "string",
+            },
+            {
+              name: "cta_button_text",
+              title: "CTA Button Text",
+              type: "string",
+            },
+            {
+              name: "cta_link",
+              title: "CTA Link",
+              type: "url",
+            },
           ],
           preview: {
             select: {
@@ -112,4 +154,3 @@ export default {
     },
   ],
 };
-
