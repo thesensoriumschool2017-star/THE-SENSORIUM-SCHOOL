@@ -47,6 +47,17 @@ function BlogDetailPage() {
       return itemSlug === safeRouteSlug;
     });
   }, [content.posts, slug]);
+  const visibleSections = useMemo(() => {
+    const sections = Array.isArray(post?.sections) ? post.sections : [];
+    return sections.filter((section) =>
+      Boolean(
+        section?.heading?.trim?.() ||
+          section?.text?.trim?.() ||
+          section?.image ||
+          section?.youtube_url
+      )
+    );
+  }, [post?.sections]);
 
   if (isLoading) {
     return (
