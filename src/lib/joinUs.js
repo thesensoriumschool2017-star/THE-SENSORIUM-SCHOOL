@@ -1,6 +1,8 @@
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const RATE_LIMIT_MAX_SUBMITS = 3;
 const RATE_LIMIT_STORAGE_KEY = "sensorium_joinus_submit_timestamps";
+const FALLBACK_JOINUS_WEBAPP_URL =
+  "https://script.google.com/macros/s/AKfycbzFGtcncuPZlE3uCUg5urGh-dgqonkcXF1fRETBWNGGq8O_YNnWkkQ6JeUBT7EjCikC1w/exec";
 
 function assertClientRateLimit() {
   if (typeof window === "undefined") return;
@@ -20,7 +22,7 @@ function assertClientRateLimit() {
 }
 
 export async function submitJoinUs({ name, phone, email, website, form_started_at }) {
-  const endpoint = import.meta.env.VITE_JOINUS_WEBAPP_URL;
+  const endpoint = import.meta.env.VITE_JOINUS_WEBAPP_URL || FALLBACK_JOINUS_WEBAPP_URL;
   if (!endpoint) {
     throw new Error("Missing VITE_JOINUS_WEBAPP_URL");
   }
