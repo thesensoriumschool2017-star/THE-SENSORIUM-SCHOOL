@@ -1,5 +1,6 @@
 import InfoPageLayout from "../components/InfoPageLayout";
 import useContentJson from "../hooks/useContentJson";
+import missionCardBg from "../assets/mission-card-bg.png";
 
 function MissionPage() {
   const fallbackMission = {
@@ -14,6 +15,7 @@ function MissionPage() {
       title={missionContent.title}
      
       body={missionContent.body}
+      backgroundImage={missionCardBg}
     />
   );
 }

@@ -4,6 +4,7 @@ import { submitJoinUs } from "../lib/joinUs";
 
 const SESSION_DISMISSED_KEY = "uef_joinus_popup_dismissed_session";
 const SESSION_SHOWN_KEY = "uef_joinus_popup_shown_session";
+const HOME_READY_EVENT = "sensorium:home-ready";
 
 function AutoJoinUsPopup() {
   const location = useLocation();
@@ -23,8 +24,20 @@ function AutoJoinUsPopup() {
     const alreadyShown = sessionStorage.getItem(SESSION_SHOWN_KEY) === "1";
     if (dismissed || alreadyShown) return;
 
-    sessionStorage.setItem(SESSION_SHOWN_KEY, "1");
-    const timer = setTimeout(() => setIsVisible(true), 1200);
+    const showPopup = () => {
+      sessionStorage.setItem(SESSION_SHOWN_KEY, "1");
+      setTimeout(() => setIsVisible(true), 350);
+    };
+
+    // On Home route, wait until full Home content is ready before showing popup.
+    if (location.pathname === "/") {
+      const onHomeReady = () => showPopup();
+      window.addEventListener(HOME_READY_EVENT, onHomeReady, { once: true });
+      return () => window.removeEventListener(HOME_READY_EVENT, onHomeReady);
+    }
+
+    // On other routes, keep normal delayed behavior.
+    const timer = setTimeout(() => showPopup(), 1200);
     return () => clearTimeout(timer);
   }, [location.pathname]);
 

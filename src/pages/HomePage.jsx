@@ -68,6 +68,11 @@ function HomePage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isPageReady) return;
+    window.dispatchEvent(new Event("sensorium:home-ready"));
+  }, [isPageReady]);
+
   if (!isPageReady) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,#fffaf0_0%,#fff4db_45%,#fffdf7_100%)] text-stone-800">

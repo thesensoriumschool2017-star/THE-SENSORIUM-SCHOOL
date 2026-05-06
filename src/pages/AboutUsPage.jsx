@@ -1,5 +1,6 @@
 import InfoPageLayout from "../components/InfoPageLayout";
 import useContentJson from "../hooks/useContentJson";
+import aboutCardBg from "../assets/about-card-bg.png";
 
 function AboutUsPage() {
   const fallbackAbout = {
@@ -14,6 +15,7 @@ function AboutUsPage() {
     <InfoPageLayout
       title={aboutContent.title}
       body={aboutContent.body}
+      backgroundImage={aboutCardBg}
     />
   );
 }
