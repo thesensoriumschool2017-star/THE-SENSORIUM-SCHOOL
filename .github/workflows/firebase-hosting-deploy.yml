@@ -12,6 +12,11 @@ env:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_SANITY_PROJECT_ID: ${{ secrets.VITE_SANITY_PROJECT_ID || 'jvlq6kos' }}
+      VITE_SANITY_DATASET: ${{ secrets.VITE_SANITY_DATASET || 'the_sensorium_school' }}
+      VITE_SANITY_API_VERSION: ${{ secrets.VITE_SANITY_API_VERSION || '2026-05-01' }}
+      VITE_JOINUS_WEBAPP_URL: ${{ secrets.VITE_JOINUS_WEBAPP_URL }}
 
     steps:
       - name: Checkout repository
