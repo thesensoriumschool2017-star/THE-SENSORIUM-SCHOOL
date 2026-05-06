@@ -150,6 +150,11 @@ function HomePage() {
                   src={homeContent.founder_image || mainImage}
                   alt="Founder profile placeholder"
                   className="h-[340px] w-full object-cover md:h-[420px]"
+                  onError={(e) => {
+                    if (e.currentTarget.src !== mainImage) {
+                      e.currentTarget.src = mainImage;
+                    }
+                  }}
                 />
                 
               </div>
