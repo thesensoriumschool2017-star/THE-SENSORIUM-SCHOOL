@@ -55,7 +55,7 @@ function Footer() {
                     <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.4l-9 5.63a1.5 1.5 0 0 1-1.6 0L3 5.4V5Zm0 2.74V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7.74l-8.47 5.3a3.5 3.5 0 0 1-3.06 0L3 7.74Z" />
                   </svg>
                 </span>
-                <a href="mailto:sonika.sami@gmail.com" className="hover:text-amber-700 break-all">sonika.sami@gmail.com</a>
+                <a href="mailto:thesensoriumschool2017@gmail.com" className="hover:text-amber-700 break-all">thesensoriumschool2017@gmail.com</a>
               </li>
             </ul>
 
