@@ -38,9 +38,9 @@ function Navbar() {
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/80 bg-amber-49/85 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-3 py-4 md:px-4">
-        <a href="/" className="whitespace-nowrap text-xl font-bold tracking-tight text-stone-800">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/80 bg-amber-50/90 backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 md:gap-4 md:px-4 md:py-4">
+        <a href="/" className="whitespace-nowrap text-sm font-bold tracking-tight text-stone-800 sm:text-base md:text-xl">
           THE SENSORIUM SCHOOL
         </a>
 
@@ -92,17 +92,17 @@ function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pr-1 sm:pr-0">
           <Link
             to="/join-us"
-            className="rounded-full bg-amber-500 px-4 py-2 text-lg font-semibold text-white transition hover:bg-amber-600"
+            className="rounded-full bg-amber-500 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-amber-600 sm:px-4 sm:py-2 sm:text-sm md:text-lg"
           >
             Join Us
           </Link>
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-200 text-stone-700 lg:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-amber-300 bg-white/70 text-stone-700 lg:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((prev) => !prev)}
