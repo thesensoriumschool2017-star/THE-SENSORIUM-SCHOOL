@@ -1,6 +1,6 @@
 import InfoPageLayout from "../components/InfoPageLayout";
 import useContentJson from "../hooks/useContentJson";
-import visionCardBg from "../assets/vision-card-bg.png";
+import visionCardBg from "../assets/vision-card-bg.webp";
 
 function VisionPage() {
   const fallbackVision = {

@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useContentJson from "../hooks/useContentJson";
-import areasSupportBg from "../assets/areas-support-bg.png";
+import areasSupportBg from "../assets/areas-support-bg.webp";
 
 function AreasOfSupportPage() {
   const fallbackAreas = {

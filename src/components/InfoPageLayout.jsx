@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import WhatsAppFloat from "./WhatsAppFloat";
-import founderCardBgMain from "../assets/founder-card-bg-main.png";
+import founderCardBgMain from "../assets/founder-card-bg-main.webp";
 
 function InfoPageLayout({ title, subtitle, body, backgroundImage }) {
   const cardBackground = backgroundImage || founderCardBgMain;

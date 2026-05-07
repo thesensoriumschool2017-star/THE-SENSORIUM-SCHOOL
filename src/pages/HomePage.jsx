@@ -4,8 +4,8 @@ import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import useCmsContent from "../hooks/useCmsContent";
 import mainImage from "../assets/main.jpeg";
-import bannerImage from "../assets/banner.png";
-import founderCardBgMain from "../assets/founder-card-bg-main.png";
+import bannerImage from "../assets/banner.webp";
+import founderCardBgMain from "../assets/founder-card-bg-main.webp";
 
 function HomePage() {
   const [isPageReady, setIsPageReady] = useState(false);

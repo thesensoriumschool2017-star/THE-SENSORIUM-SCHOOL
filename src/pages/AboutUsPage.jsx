@@ -1,6 +1,6 @@
 import InfoPageLayout from "../components/InfoPageLayout";
 import useContentJson from "../hooks/useContentJson";
-import aboutCardBg from "../assets/about-card-bg.png";
+import aboutCardBg from "../assets/about-card-bg.webp";
 
 function AboutUsPage() {
   const fallbackAbout = {

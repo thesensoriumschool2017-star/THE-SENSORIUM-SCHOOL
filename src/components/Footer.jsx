@@ -1,4 +1,4 @@
-import schoolLogo from "../assets/logo.png";
+import schoolLogo from "../assets/logo.webp";
 
 function Footer() {
   return (
