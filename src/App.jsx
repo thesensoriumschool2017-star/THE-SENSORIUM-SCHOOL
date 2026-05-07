@@ -18,59 +18,59 @@ const SEO_BY_PATH = {
   "/": {
     title: "The Sensorium School | Child Development and Inclusive Learning",
     description:
-      "The Sensorium School supports children and families through inclusive learning, therapy-informed development, and community-driven programs.",
+      "The Sensorium School supports children and families through inclusive learning, therapy-informed development, counseling support, and community-driven growth programs.",
   },
   "/about-us": {
     title: "About Us | The Sensorium School",
     description:
-      "Learn about The Sensorium School mission, leadership, and commitment to inclusive education and child development.",
+      "Learn about The Sensorium School mission, leadership, and long-term commitment to inclusive education, child development, and meaningful family support.",
   },
   "/our-services": {
     title: "Our Services | The Sensorium School",
     description:
-      "Explore services including child development support, counseling, parent guidance, and inclusive growth programs.",
+      "Explore our services including child development support, speech and occupational therapy, counseling, parent guidance, and inclusive learning programs.",
   },
   "/our-approach": {
     title: "Our Approach | The Sensorium School",
     description:
-      "Discover our empathy-first approach to child development, inclusive learning, and family-centered support.",
+      "Discover our empathy-first approach that combines inclusive learning, structured interventions, and family-centered support for holistic child development.",
   },
   "/areas-of-support": {
     title: "Areas of Support | The Sensorium School",
     description:
-      "See the key areas where we support children and families through education, empowerment, and practical interventions.",
+      "See the key areas where we support children and families through education, empowerment, skill-building, and practical developmental interventions.",
   },
   "/our-mission": {
     title: "Our Mission | The Sensorium School",
     description:
-      "Read The Sensorium School mission to build inclusive, equitable, and empowering pathways for children and communities.",
+      "Read The Sensorium School mission to build inclusive, equitable, and empowering pathways that help children, families, and communities thrive together.",
   },
   "/our-vision": {
     title: "Our Vision | The Sensorium School",
     description:
-      "Understand The Sensorium School vision for a compassionate, inclusive, and opportunity-driven future.",
+      "Understand The Sensorium School vision for a compassionate, inclusive, and opportunity-driven future where every child receives meaningful support.",
   },
   "/join-us": {
     title: "Join Us | The Sensorium School",
     description:
-      "Partner with The Sensorium School to contribute, collaborate, and support meaningful child development initiatives.",
+      "Partner with The Sensorium School to contribute, collaborate, and support meaningful child development and inclusive community initiatives.",
   },
   "/gallery": {
     title: "Gallery | The Sensorium School",
     description:
-      "View moments from our programs, events, and community work at The Sensorium School.",
+      "View highlights from our programs, events, and community work that reflect The Sensorium School journey in inclusive child development.",
   },
   "/blog": {
     title: "Blog | The Sensorium School",
     description:
-      "Read updates, insights, and stories from The Sensorium School on inclusion, learning, and social impact.",
+      "Read updates, insights, and stories from The Sensorium School on inclusion, learning, child development, and social impact.",
   },
 };
 
 const DEFAULT_SEO = {
   title: "The Sensorium School",
   description:
-    "The Sensorium School supports child development through inclusive, empathy-led education and community engagement.",
+    "The Sensorium School supports child development through inclusive, empathy-led education, family support, and strong community engagement initiatives.",
 };
 
 function setMetaTag(attribute, value, content) {
@@ -107,9 +107,11 @@ function SeoManager() {
       ? {
           title: "Blog Detail | The Sensorium School",
           description:
-            "Read detailed articles and updates from The Sensorium School blog.",
+            "Read detailed articles and updates from The Sensorium School blog on inclusion, child development, and practical support for families.",
         }
       : SEO_BY_PATH[pathname] || DEFAULT_SEO;
+    const canonicalPath = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+    const canonicalUrl = `https://thesensoriumschool.com${canonicalPath}`;
 
     document.title = pageSeo.title;
 
@@ -117,10 +119,20 @@ function SeoManager() {
     setMetaTag("property", "og:title", pageSeo.title);
     setMetaTag("property", "og:description", pageSeo.description);
     setMetaTag("property", "og:type", "website");
-    setMetaTag("property", "og:url", `https://thesensoriumschool.com${pathname}`);
+    setMetaTag("property", "og:url", canonicalUrl);
+    setMetaTag("property", "og:image", "https://thesensoriumschool.com/favicon.png");
     setMetaTag("name", "twitter:card", "summary_large_image");
     setMetaTag("name", "twitter:title", pageSeo.title);
     setMetaTag("name", "twitter:description", pageSeo.description);
+    setMetaTag("name", "twitter:image", "https://thesensoriumschool.com/favicon.png");
+
+    let canonicalTag = document.head.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.setAttribute("href", canonicalUrl);
   }, [pathname]);
 
   return null;

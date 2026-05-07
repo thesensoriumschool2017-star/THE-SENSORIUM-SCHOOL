@@ -122,9 +122,9 @@ function HomePage() {
             />
             <div className="relative z-10 grid gap-6 md:grid-cols-12">
             <div className="md:col-span-8 space-y-4">
-              <h2 className="text-3xl font-bold leading-tight md:text-4xl">
+              <h1 className="text-3xl font-bold leading-tight md:text-4xl">
                 {homeContent.hero_title}
-              </h2>
+              </h1>
 
               {founderDeskParagraphs.map((paragraph) => (
                 <p key={paragraph} className="text-md leading-relaxed text-stone-700">
