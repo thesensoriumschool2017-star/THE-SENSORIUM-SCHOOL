@@ -5,8 +5,14 @@ import Navbar from "../components/Navbar";
 import WhatsAppFloat from "../components/WhatsAppFloat";
 import { galleryPhotos } from "../data/siteData";
 import useCmsContent from "../hooks/useCmsContent";
+import bannerImage from "../assets/banner.webp";
+import founderImage from "../assets/main.jpeg";
 
 const INITIAL_VISIBLE_ITEMS = 9;
+const DEFAULT_GALLERY_IMAGES = [
+  { src: bannerImage, alt: "The Sensorium School banner" },
+  { src: founderImage, alt: "The Sensorium School founder" },
+];
 
 function toYoutubeEmbed(url) {
   if (!url) return "";
@@ -254,10 +260,12 @@ function MediaSection({ title, items, emptyMessage, onOpen }) {
 }
 
 function GalleryPage() {
+  const fallbackPhotos = galleryPhotos.length ? galleryPhotos : DEFAULT_GALLERY_IMAGES;
+
   const fallbackGallery = {
     title: "Photo Gallery",
     subtitle: "Foundation Moments",
-    items: galleryPhotos.map((photo, index) => ({
+    items: fallbackPhotos.map((photo, index) => ({
       id: `fallback-${index}`,
       type: "image",
       caption: photo.alt,
