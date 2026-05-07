@@ -23,6 +23,14 @@
             "value": "strict-origin-when-cross-origin"
           },
           {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000; includeSubDomains"
+          },
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin"
+          },
+          {
             "key": "Content-Security-Policy",
             "value": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https://*.sanity.io https://script.google.com https://script.googleusercontent.com https://*.googleapis.com; form-action 'self' https://script.google.com https://script.googleusercontent.com"
           }
