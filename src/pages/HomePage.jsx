@@ -132,7 +132,7 @@ function HomePage() {
                 </p>
               ))}
 
-              <h3 className="pt-2 text-lg font-semibold text-stone-900">{homeContent.impact_title}</h3>
+              <h2 className="pt-2 text-lg font-semibold text-stone-900">{homeContent.impact_title}</h2>
               <ul className="list-disc space-y-2 pl-6 text-md leading-relaxed text-stone-700">
                 {homeContent.impact_points?.map((point) => (
                   <li key={point}>{point}</li>

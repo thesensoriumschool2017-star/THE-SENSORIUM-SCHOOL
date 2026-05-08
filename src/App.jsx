@@ -16,59 +16,59 @@ import SiteAnnouncementPopup from "./components/SiteAnnouncementPopup";
 
 const SEO_BY_PATH = {
   "/": {
-    title: "The Sensorium School | Child Development and Inclusive Learning",
+    title: "The Sensorium School of Child Development | Inclusive Learning",
     description:
       "The Sensorium School supports children and families through inclusive learning, therapy-informed development, counseling support, and community-driven growth programs.",
   },
   "/about-us": {
-    title: "About Us | The Sensorium School",
+    title: "About Us | The Sensorium School of Child Development",
     description:
       "Learn about The Sensorium School mission, leadership, and long-term commitment to inclusive education, child development, and meaningful family support.",
   },
   "/our-services": {
-    title: "Our Services | The Sensorium School",
+    title: "Our Services | The Sensorium School of Child Development",
     description:
       "Explore our services including child development support, speech and occupational therapy, counseling, parent guidance, and inclusive learning programs.",
   },
   "/our-approach": {
-    title: "Our Approach | The Sensorium School",
+    title: "Our Approach | The Sensorium School of Child Development",
     description:
       "Discover our empathy-first approach that combines inclusive learning, structured interventions, and family-centered support for holistic child development.",
   },
   "/areas-of-support": {
-    title: "Areas of Support | The Sensorium School",
+    title: "Areas of Support | The Sensorium School of Child Development",
     description:
       "See the key areas where we support children and families through education, empowerment, skill-building, and practical developmental interventions.",
   },
   "/our-mission": {
-    title: "Our Mission | The Sensorium School",
+    title: "Our Mission | The Sensorium School of Child Development",
     description:
       "Read The Sensorium School mission to build inclusive, equitable, and empowering pathways that help children, families, and communities thrive together.",
   },
   "/our-vision": {
-    title: "Our Vision | The Sensorium School",
+    title: "Our Vision | The Sensorium School of Child Development",
     description:
       "Understand The Sensorium School vision for a compassionate, inclusive, and opportunity-driven future where every child receives meaningful support.",
   },
   "/join-us": {
-    title: "Join Us | The Sensorium School",
+    title: "Join Us | The Sensorium School of Child Development",
     description:
       "Partner with The Sensorium School to contribute, collaborate, and support meaningful child development and inclusive community initiatives.",
   },
   "/gallery": {
-    title: "Gallery | The Sensorium School",
+    title: "Gallery | The Sensorium School of Child Development",
     description:
       "View highlights from our programs, events, and community work that reflect The Sensorium School journey in inclusive child development.",
   },
   "/blog": {
-    title: "Blog | The Sensorium School",
+    title: "Blog | The Sensorium School of Child Development",
     description:
       "Read updates, insights, and stories from The Sensorium School on inclusion, learning, child development, and social impact.",
   },
 };
 
 const DEFAULT_SEO = {
-  title: "The Sensorium School",
+  title: "The Sensorium School of Child Development",
   description:
     "The Sensorium School supports child development through inclusive, empathy-led education, family support, and strong community engagement initiatives.",
 };
@@ -105,7 +105,7 @@ function SeoManager() {
     const isBlogDetail = pathname.startsWith("/blog/");
     const pageSeo = isBlogDetail
       ? {
-          title: "Blog Detail | The Sensorium School",
+          title: "Blog Detail | The Sensorium School of Child Development",
           description:
             "Read detailed articles and updates from The Sensorium School blog on inclusion, child development, and practical support for families.",
         }
