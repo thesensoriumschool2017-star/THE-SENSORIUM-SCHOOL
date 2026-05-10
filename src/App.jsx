@@ -120,11 +120,11 @@ function SeoManager() {
     setMetaTag("property", "og:description", pageSeo.description);
     setMetaTag("property", "og:type", "website");
     setMetaTag("property", "og:url", canonicalUrl);
-    setMetaTag("property", "og:image", "https://thesensoriumschool.com/favicon.png");
+    setMetaTag("property", "og:image", "https://thesensoriumschool.com/logo-search.png");
     setMetaTag("name", "twitter:card", "summary_large_image");
     setMetaTag("name", "twitter:title", pageSeo.title);
     setMetaTag("name", "twitter:description", pageSeo.description);
-    setMetaTag("name", "twitter:image", "https://thesensoriumschool.com/favicon.png");
+    setMetaTag("name", "twitter:image", "https://thesensoriumschool.com/logo-search.png");
 
     let canonicalTag = document.head.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
